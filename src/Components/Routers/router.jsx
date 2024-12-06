@@ -14,6 +14,7 @@ import Register from '../Pages/Register';
 import Login from '../Pages/Login';
 
 
+
 const Layout = ({ children }) => (
   <>
     <Navbar />

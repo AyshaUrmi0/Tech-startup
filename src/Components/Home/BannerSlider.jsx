@@ -8,24 +8,24 @@ const BannerSlider = () => {
   const slides = [
     {
       id: 1,
-      image: "https://i.ibb.co/gZH5PsX/techspring-slide1.jpg",
+      image: "https://img.freepik.com/free-photo/scene-with-business-person-working-futuristic-office-job_23-2151003746.jpg?t=st=1733416578~exp=1733420178~hmac=734e3b835d74b25f101550e124d8a24f2961644d6c329950fac747c52d44bd78&w=900",
       title: "Welcome to TechSpring",
       description: "Empowering the next generation of tech startups to innovate and grow.",
     },
     {
       id: 2,
-      image: "https://i.ibb.co/VtKjsZhttps://i.ibb.co.com/MBFyhY8/futurism-perspective-digital-nomads-lifestyle-1.jpgX/techspring-slide2.jpg",
+      image: "https://img.freepik.com/free-photo/scene-with-business-person-working-futuristic-office-job_23-2151003743.jpg",
       title: "Shape Your Future",
       description: "Join us in launching revolutionary tech solutions that change the world.",
     },
     {
       id: 3,
-      image: "https://i.ibb.co/37mNSjb/techspring-slide3.jpg",
+      image: "https://img.freepik.com/free-photo/business-person-futuristic-business-environment_23-2150970215.jpg?t=st=1733416632~exp=1733420232~hmac=2d5cfbf2fc44fcf387cf585891a2fd913647efd8abb57ca0cdf31a7e55063bc2&w=826",
       title: "Join The Movement",
       description: "Be part of a community that supports innovative tech startups and ideas.",
     },
   ];
-
+  
   return (
     <div className="w-full h-[400px] md:h-[500px]">
       <Swiper
