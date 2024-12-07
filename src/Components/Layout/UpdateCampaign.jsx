@@ -5,36 +5,55 @@ import { toast } from "react-toastify";
 import Loading from "./Loading";
 
 const UpdateCampaign = () => {
-  const { id } = useParams(); // Extract the campaign ID from the route
+  const { id } = useParams();
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext); // Get the current user
+  const { user } = useContext(AuthContext);
 
-  const [campaign, setCampaign] = useState(null);
+  const [campaign, setCampaign] = useState(null); 
+  const [formData, setFormData] = useState({
+    title: "",
+    type: "",
+    description: "",
+    userName: user?.displayName || "",
+    userEmail: user?.email || "",
+    image: "",
+    minimumDonation: "",
+    deadline: "",
+  });
 
- 
   useEffect(() => {
     fetch(`http://localhost:4000/campaigns/${id}`)
       .then((response) => response.json())
-      .then((data) => setCampaign(data))
+      .then((data) => {
+        setCampaign(data);
+        setFormData({
+          image: data.image,
+          title: data.title,
+          type: data.type,
+          description: data.description,
+          minimumDonation: data.minimumDonation,
+          deadline: data.deadline,
+        });
+      })
       .catch((error) => console.error("Error fetching campaign data:", error));
   }, [id]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const form = e.target;
     const updatedData = {
-      image: form.image.value,
-      title: form.title.value,
-      type: form.type.value,
-      description: form.description.value,
-      minimumDonation: form.minimumDonation.value,
-      deadline: form.deadline.value,
-      userName: user.displayName, // Read-only, but still included in the update
-      userEmail: user.email, // Read-only, but still included in the update
+      ...formData,
+      userName: user.displayName, 
+      userEmail: user.email,
+      image: user.image,
     };
 
-    // Send the updated data to the backend
+   
     fetch(`http://localhost:4000/campaigns/${id}`, {
       method: "PUT",
       headers: {
@@ -46,7 +65,7 @@ const UpdateCampaign = () => {
       .then((data) => {
         if (data.modifiedCount > 0) {
           toast.success("Campaign updated successfully!");
-          navigate("/campaigns"); 
+          navigate("/campaigns");
         } else {
           toast.error("Failed to update the campaign!");
         }
@@ -58,7 +77,7 @@ const UpdateCampaign = () => {
   };
 
   if (!campaign) {
-    return <Loading />  ; 
+    return <Loading />; // Show a loading spinner or message
   }
 
   return (
@@ -72,8 +91,10 @@ const UpdateCampaign = () => {
           <input
             type="text"
             name="image"
+            value={formData.image}
+            onChange={handleChange}
+            placeholder={formData.image || "Enter image URL"}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            defaultValue={campaign.image}
             required
           />
         </div>
@@ -83,8 +104,10 @@ const UpdateCampaign = () => {
           <input
             type="text"
             name="title"
+            value={formData.title}
+            onChange={handleChange}
+            placeholder={formData.title || "Enter campaign title"}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            defaultValue={campaign.title}
             required
           />
         </div>
@@ -93,8 +116,9 @@ const UpdateCampaign = () => {
           <label className="block mb-1 text-sm font-medium">Campaign Type</label>
           <select
             name="type"
+            value={formData.type || ""}
+            onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            defaultValue={campaign.type}
           >
             <option value="Personal Issue">Personal Issue</option>
             <option value="Startup">Startup</option>
@@ -107,8 +131,10 @@ const UpdateCampaign = () => {
           <label className="block mb-1 text-sm font-medium">Description</label>
           <textarea
             name="description"
+            value={formData.description || ""}
+            onChange={handleChange}
+            placeholder={formData.description || "Enter campaign description"}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            defaultValue={campaign.description}
             required
           ></textarea>
         </div>
@@ -120,8 +146,10 @@ const UpdateCampaign = () => {
           <input
             type="number"
             name="minimumDonation"
+            value={formData.minimumDonation || ""}
+            onChange={handleChange}
+            placeholder={formData.minimumDonation || "Enter minimum donation amount"}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            defaultValue={campaign.minimumDonation}
             required
           />
         </div>
@@ -131,8 +159,9 @@ const UpdateCampaign = () => {
           <input
             type="date"
             name="deadline"
+            value={formData.deadline || ""}
+            onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            defaultValue={campaign.deadline}
             required
           />
         </div>
