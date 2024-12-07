@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import { useAuth } from "../../Components/provider/AuthProvider"; // Import the hook
 
-const CampaignDetails = ({ setDonations }) => {  // Pass setDonations as a prop
+const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations as a prop with a default value
   const { id } = useParams();
   const navigate = useNavigate();
   const { user, loading } = useAuth(); // Use the useAuth hook to get user data
@@ -101,3 +101,4 @@ const CampaignDetails = ({ setDonations }) => {  // Pass setDonations as a prop
 };
 
 export default CampaignDetails;
+

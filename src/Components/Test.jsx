@@ -10,7 +10,7 @@ const Test = () => {
         const fetchdata = async () => {
             const response = await fetch('http://localhost:4000/addCampaigns')
             const data = await response.json()
-            console.log(data)
+            // console.log(data)
             setstate(data)
         }
         fetchdata()

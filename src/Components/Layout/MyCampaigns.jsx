@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../Components/provider/AuthProvider"; // Import the hook
 import Loading from "./Loading";
+import { toast } from "react-toastify";
 
 const MyCampaigns = () => {
   const navigate = useNavigate();
   const { user, loading } = useAuth(); 
-  console.log(user);// Get user and loading status
+ 
   const [campaigns, setCampaigns] = useState([]);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const MyCampaigns = () => {
         setCampaigns(data);
       } catch (error) {
         console.error("Error fetching user campaigns:", error);
-        alert("Unable to fetch your campaigns.");
+        toast.error("Unable to fetch your campaigns.");
       }
     };
 
@@ -49,13 +50,13 @@ const MyCampaigns = () => {
 
         if (response.ok) {
           setCampaigns(campaigns.filter((campaign) => campaign._id !== campaignId));
-          alert("Campaign deleted successfully.");
+          toast.success("Campaign deleted successfully.");
         } else {
-          alert("Failed to delete the campaign.");
+          toast.error("Failed to delete the campaign.");
         }
       } catch (error) {
         console.error("Error deleting campaign:", error);
-        alert("An error occurred while deleting the campaign.");
+        toast.error("An error occurred while deleting the campaign.");
       }
     }
   };
@@ -114,3 +115,4 @@ const MyCampaigns = () => {
 };
 
 export default MyCampaigns;
+
