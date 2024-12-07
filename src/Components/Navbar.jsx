@@ -37,8 +37,17 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Hamburger Menu for Mobile */}
-        <div className="sm:hidden">
+        {/* Theme Toggle and Hamburger Menu for Mobile */}
+        <div className="flex items-center space-x-4 sm:hidden">
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className={`text-2xl focus:outline-none ${
+              theme === 'dark' ? 'text-teal-400' : 'text-teal-600'
+            }`}
+          >
+            {theme === 'light' ? <FaMoon /> : <FaSun />}
+          </button>
           <button
             onClick={toggleMenu}
             aria-label="Toggle navigation"
@@ -50,22 +59,9 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Theme Toggle */}
-        <div className="flex items-center space-x-4">
-          <button
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            className={`text-2xl focus:outline-none ${
-              theme === 'dark' ? 'text-teal-400' : 'text-teal-600'
-            }`}
-          >
-            {theme === 'light' ? <FaMoon /> : <FaSun />}
-          </button>
-        </div>
-
         {/* Navigation Links */}
         <div
-          className={`fixed inset-x-0 top-16 z-50 flex flex-col items-center sm:relative sm:flex-row sm:items-center sm:space-x-6 sm:top-0 sm:translate-y-0 transition-transform duration-300 ${
+          className={`fixed inset-x-0 top-16 z-50 flex flex-col items-center bg-white sm:bg-transparent sm:relative sm:flex-row sm:items-center sm:space-x-6 sm:top-0 sm:translate-y-0 transition-transform duration-300 ${
             isOpen ? 'translate-y-0' : '-translate-y-full sm:translate-y-0'
           }`}
         >
@@ -128,7 +124,7 @@ const Navbar = () => {
                     alt="User"
                     className="w-8 h-8 rounded-full cursor-pointer"
                   />
-                  <div className="absolute z-10 hidden w-32 px-4 py-2 mt-2 text-sm text-center text-white  rounded-lg shadow-lg group-hover:block">
+                  <div className="absolute z-10 hidden w-32 px-4 py-2 mt-2 text-sm text-center text-white bg-gray-800 rounded-lg shadow-lg group-hover:block">
                     {user.displayName || 'User'}
                   </div>
                 </div>
@@ -172,6 +168,19 @@ const Navbar = () => {
               </>
             )}
           </div>
+        </div>
+
+        {/* Theme Toggle for larger screens */}
+        <div className="hidden sm:flex items-center space-x-4">
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            className={`text-2xl focus:outline-none ${
+              theme === 'dark' ? 'text-teal-400' : 'text-teal-600'
+            }`}
+          >
+            {theme === 'light' ? <FaMoon /> : <FaSun />}
+          </button>
         </div>
       </div>
     </nav>
