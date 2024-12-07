@@ -30,7 +30,7 @@ const FeaturedInnovators = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-gray-50 container mx-auto justify-center items-center">
       <div className="container px-4 mx-auto">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold animate_animated animate_fadeInDown ">

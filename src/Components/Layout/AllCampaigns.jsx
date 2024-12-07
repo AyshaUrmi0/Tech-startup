@@ -7,20 +7,37 @@ const AllCampaigns = () => {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
+  // Function to fetch campaigns with sorting
+  const fetchCampaigns = async (sortByDesc) => {
+    setLoading(true);
+    const response = await fetch(`http://localhost:4000/addCampaigns?sortByDesc=${sortByDesc}`);
+    const data = await response.json();
+    setCampaigns(data);
+    setLoading(false);
+  };
+
+  // Fetch campaigns initially when the component mounts
   useEffect(() => {
-    const fetchCampaigns = async () => {
-      setLoading(true);
-      const response = await fetch("http://localhost:4000/addCampaigns");
-      const data = await response.json();
-      setCampaigns(data);
-      setLoading(false);
-    };
-    fetchCampaigns();
+    fetchCampaigns(false); // Default fetch with no sorting
   }, []);
+
+  // Handle the sort button click
+  const handleSort = () => {
+    fetchCampaigns(true); // Fetch campaigns with descending sorting
+  };
 
   return (
     <div className="p-5">
       <h1 className="text-2xl font-bold mb-5">All Campaigns</h1>
+      
+      {/* Button to sort by descending order */}
+      <button
+        onClick={handleSort}
+        className="bg-teal-500 text-white px-4 py-2 rounded mb-5"
+      >
+        Sort by Descending Order
+      </button>
+
       <div className="overflow-x-auto">
         {loading ? (
           <Loading />
@@ -61,4 +78,3 @@ const AllCampaigns = () => {
 };
 
 export default AllCampaigns;
-
