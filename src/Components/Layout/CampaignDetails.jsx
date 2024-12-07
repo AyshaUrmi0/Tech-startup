@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import { useAuth } from "../../Components/provider/AuthProvider"; // Import the hook
 
-const CampaignDetails = () => {
+const CampaignDetails = ({ setDonations }) => {  // Pass setDonations as a prop
   const { id } = useParams();
   const navigate = useNavigate();
   const { user, loading } = useAuth(); // Use the useAuth hook to get user data
@@ -50,6 +50,8 @@ const CampaignDetails = () => {
 
       if (response.ok) {
         alert("Thank you for your donation!");
+        // After donation, refetch donations
+        setDonations(prev => [...prev, donationData]);  // Update the donations list
       } else {
         alert("Failed to process donation. Please try again.");
       }

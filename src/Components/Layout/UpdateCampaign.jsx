@@ -2,26 +2,25 @@ import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
-import Loading from "./Loading";
+import Loading from "./Loading"; // Add a loading component for better UX
 
 const UpdateCampaign = () => {
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { id } = useParams(); // Get the campaign ID from the URL
+  const navigate = useNavigate(); // Used for navigation
+  const { user } = useContext(AuthContext); // Get user from AuthContext
 
-  const [campaign, setCampaign] = useState(null); 
-  const [formData, setFormData] = useState({
-    title: "",
-    type: "",
-    description: "",
-    userName: user?.displayName || "",
-    userEmail: user?.email || "",
-    image: "",
-    minimumDonation: "",
-    deadline: "",
-  });
+  const [campaign, setCampaign] = useState(null); // Store campaign data
+  const [formData, setFormData] = useState({}); // Store form input data
+  const [isLoading, setIsLoading] = useState(true); // Loading state
 
+  // Fetch campaign data and check authentication
   useEffect(() => {
+    if (!user) {
+      setIsLoading(false); // Stop loading if the user is not logged in
+      return;
+    }
+
+    // Fetch the campaign data by ID
     fetch(`http://localhost:4000/campaigns/${id}`)
       .then((response) => response.json())
       .then((data) => {
@@ -33,27 +32,38 @@ const UpdateCampaign = () => {
           description: data.description,
           minimumDonation: data.minimumDonation,
           deadline: data.deadline,
+          userEmail: user.email,
+          userName: user.displayName,
         });
+        setIsLoading(false); // Data loaded
       })
-      .catch((error) => console.error("Error fetching campaign data:", error));
-  }, [id]);
+      .catch((error) => {
+        console.error("Error fetching campaign data:", error);
+        setIsLoading(false); // Stop loading on error
+      });
+  }, [id, user]);
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!user) {
+      toast.error("You must be logged in to update the campaign.");
+      return;
+    }
+
     const updatedData = {
       ...formData,
-      userName: user.displayName, 
-      userEmail: user.email,
-      image: user.image,
+      userName: user.displayName, // Attach user's display name
+      userEmail: user.email, // Attach user's email
     };
 
-   
     fetch(`http://localhost:4000/campaigns/${id}`, {
       method: "PUT",
       headers: {
@@ -65,7 +75,7 @@ const UpdateCampaign = () => {
       .then((data) => {
         if (data.modifiedCount > 0) {
           toast.success("Campaign updated successfully!");
-          navigate("/campaigns");
+          navigate("/campaigns"); // Redirect after success
         } else {
           toast.error("Failed to update the campaign!");
         }
@@ -76,10 +86,32 @@ const UpdateCampaign = () => {
       });
   };
 
-  if (!campaign) {
-    return <Loading />; // Show a loading spinner or message
+  // Show a loading spinner while loading
+  if (isLoading) {
+    return <Loading />;
   }
 
+//   // Show login prompt if user is not authenticated
+//   if (!user) {
+//     return (
+//       <div className="text-center mt-10">
+//         <h2 className="text-xl font-semibold">You must be logged in to access this page.</h2>
+//         <button
+//           className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+//           onClick={() => navigate("/login")}
+//         >
+//           Go to Login
+//         </button>
+//       </div>
+//     );
+//   }
+
+//   // Show an error message if the campaign data is not found
+//   if (!campaign) {
+//     return <div className="text-center">Campaign not found.</div>;
+//   }
+
+  // Render the form for updating the campaign
   return (
     <div className="max-w-lg px-4 py-8 mx-auto md:px-6 lg:px-8">
       <h2 className="mb-4 text-2xl font-bold text-center md:text-left">
@@ -91,40 +123,35 @@ const UpdateCampaign = () => {
           <input
             type="text"
             name="image"
-            value={formData.image}
+            value={formData.image || ""}
             onChange={handleChange}
-            placeholder={formData.image || "Enter image URL"}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Campaign Title</label>
+          <label className="block mb-1 text-sm font-medium">Title</label>
           <input
             type="text"
             name="title"
-            value={formData.title}
+            value={formData.title || ""}
             onChange={handleChange}
-            placeholder={formData.title || "Enter campaign title"}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Campaign Type</label>
-          <select
+          <label className="block mb-1 text-sm font-medium">Type</label>
+          <input
+            type="text"
             name="type"
             value={formData.type || ""}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-          >
-            <option value="Personal Issue">Personal Issue</option>
-            <option value="Startup">Startup</option>
-            <option value="Business">Business</option>
-            <option value="Creative Ideas">Creative Ideas</option>
-          </select>
+            required
+          />
         </div>
 
         <div>
@@ -133,22 +160,19 @@ const UpdateCampaign = () => {
             name="description"
             value={formData.description || ""}
             onChange={handleChange}
-            placeholder={formData.description || "Enter campaign description"}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            rows="4"
             required
           ></textarea>
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">
-            Minimum Donation Amount
-          </label>
+          <label className="block mb-1 text-sm font-medium">Minimum Donation</label>
           <input
             type="number"
             name="minimumDonation"
             value={formData.minimumDonation || ""}
             onChange={handleChange}
-            placeholder={formData.minimumDonation || "Enter minimum donation amount"}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             required
           />
@@ -166,29 +190,34 @@ const UpdateCampaign = () => {
           />
         </div>
 
+        {/* Readonly email and displayName fields */}
         <div>
-          <label className="block mb-1 text-sm font-medium">User Name</label>
+          <label className="block mb-1 text-sm font-medium">User Email</label>
           <input
-            type="text"
-            value={user.displayName}
-            className="w-full px-4 py-2 bg-gray-100 border rounded-md focus:outline-none"
+            type="email"
+            name="userEmail"
+            value={formData.userEmail || ""}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             readOnly
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">User Email</label>
+          <label className="block mb-1 text-sm font-medium">User Display Name</label>
           <input
-            type="email"
-            value={user.email}
-            className="w-full px-4 py-2 bg-gray-100 border rounded-md focus:outline-none"
+            type="text"
+            name="userName"
+            value={formData.userName || ""}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             readOnly
           />
         </div>
 
         <button
           type="submit"
-          className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+          className="w-full px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600 focus:ring-2 focus:ring-green-400 focus:outline-none"
         >
           Update Campaign
         </button>
