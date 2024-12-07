@@ -8,81 +8,57 @@ const AddCampaign = () => {
  
 
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const form =e.target;
-    const image=form.image.value;
-    const title=form.title.value;
-    const type=form.type.value;
-    const description=form.description.value;
-    const minimumDonation=form.minimumDonation.value;
-    const deadline=form.deadline.value;
-
-
-    const formData={
-        image, title,type,description,minimumDonation,deadline
-    }
-    console.log(formData);
-
-
-    // Adding user details to the form data
+  
+    const form = e.target;
+    const image = form.image.value;
+    const title = form.title.value;
+    const type = form.type.value;
+    const description = form.description.value;
+    const minimumDonation = form.minimumDonation.value;
+    const deadline = form.deadline.value;
+  
+    // Create form data
+    const formData = {
+      image,
+      title,
+      type,
+      description,
+      minimumDonation,
+      deadline,
+    };
+  
+    // Merge user details into form data
     const newCampaign = {
-     
+      ...formData,
       userName: user.displayName,
       userEmail: user.email,
     };
-
-        fetch('http://localhost:4000/addCampaigns',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          }
-        )
-        
-          .then(response => response.json())
-          .then(data => {
-            console.log(data);
-            if (data.insertedId) {
-              toast.success('Campaign added successfully!');
-             
-            } else {
-              toast.error('Failed to add the campaign!');
-            }
-          })
-        
-
-//     try {
-//       const response = await fetch("https://your-server-url.com/campaigns", {
-//         method: "POST",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(newCampaign),
-//       });
-
-//       if (response.ok) {
-//         toast.success("Campaign added successfully!");
-//         setFormData({
-//           image: "",
-//           title: "",
-//           type: "Personal Issue",
-//           description: "",
-//           minimumDonation: "",
-//           deadline: "",
-//         });
-//       } else {
-//         toast.error("Failed to add the campaign!");
-//       }
-//     } catch (error) {
-//       console.error("Error adding campaign:", error);
-//       toast.error("Something went wrong!");
-//     }
+  
+    // Send the request
+    fetch('http://localhost:4000/addCampaigns', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newCampaign), // Send merged object
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          toast.success('Campaign added successfully!');
+        } else {
+          toast.error('Failed to add the campaign!');
+        }
+      })
+      .catch((error) => {
+        console.error('Error adding campaign:', error);
+        toast.error('Something went wrong!');
+      });
   };
+  
 
   return (
     <div className="max-w-lg px-4 py-8 mx-auto md:px-6 lg:px-8">
