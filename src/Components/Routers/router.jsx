@@ -12,6 +12,7 @@ import CampaignDetails from '../Layout/CampaignDetails';
 import UpdateCampaign from '../Layout/UpdateCampaign';
 import Register from '../Pages/Register';
 import Login from '../Pages/Login';
+import PrivateRoute from './Privateroute';
 
 
 
@@ -44,7 +45,9 @@ const router = createBrowserRouter([
     path: '/addCampaign',
     element: (
       <Layout>
-        <AddCampaign />
+       <PrivateRoute>
+       <AddCampaign />
+       </PrivateRoute>
       </Layout>
     ),
   },
@@ -52,7 +55,7 @@ const router = createBrowserRouter([
     path: '/myCampaigns',
     element: (
       <Layout>
-        <MyCampaigns />
+       <PrivateRoute> <MyCampaigns /></PrivateRoute>
       </Layout>
     ),
   },
@@ -60,7 +63,7 @@ const router = createBrowserRouter([
     path: '/myDonations',
     element: (
       <Layout>
-        <MyDonations />
+       <PrivateRoute><MyDonations/></PrivateRoute>
       </Layout>
     ),
   },
