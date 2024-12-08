@@ -46,7 +46,7 @@ const Navbar = () => {
           </button>
           <ul
             tabIndex={0}
-            className={`menu menu-sm dropdown-content mt-3 w-52 p-2 shadow bg-base-100 rounded-box z-[999] ${
+            className={`menu menu-sm dropdown-content mt-3 w-52 p-2 shadow bg-base-100 rounded-box z-[9999] ${
               isOpen ? "block" : "hidden"
             }`}>
             <li>
