@@ -5,7 +5,7 @@ const Card = ({ item }) => {
   const navigate = useNavigate();
 
   const handleSeeMore = () => {
-    navigate(`/campaign/${item._id}`); // Navigate to the details page using the campaign ID
+    navigate(`/campaign/${item._id}`); 
   };
 
   return (

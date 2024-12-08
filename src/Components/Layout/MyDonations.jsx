@@ -1,25 +1,25 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import { toast } from "react-toastify";
 
 const MyDonations = () => {
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [donations, setDonations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (!user) {
       toast.error("You must be logged in to view your donations.");
-      navigate("/login");
+      // navigate("/login");
       return;
     }
 
     const fetchDonations = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/donations?email=${user.email}`);
+        const response = await fetch(`https://tech-spring-server.vercel.app/donations?email=${user.email}`);
         if (!response.ok) {
           throw new Error("Failed to fetch donations");
         }
@@ -34,7 +34,7 @@ const MyDonations = () => {
     };
 
     fetchDonations();
-  }, [user, navigate]);
+  }, []);
 
   if (isLoading) {
     return <Loading />;
@@ -46,18 +46,20 @@ const MyDonations = () => {
 
   return (
     <div className="myDonationsContainer">
-      <h2 className="text-center text-2xl font-bold mb-6">My Donations</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <h2 className="mb-6 text-2xl font-bold text-center">My Donations</h2>
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {donations.map((donation) => (
-          <div key={donation.id} className="max-w-sm rounded overflow-hidden shadow-lg">
+          <div key={donation.id} className="max-w-sm overflow-hidden rounded shadow-lg">
             <img className="w-full" src={donation.image} alt={donation.title} />
             <div className="px-6 py-4">
-              <h3 className="font-bold text-xl mb-2">{donation.title}</h3>
-              <p className="text-gray-700 text-base">{donation.description}</p>
+              <h3 className="mb-2 text-xl font-bold">{donation.title}</h3>
+              <p className="text-base text-gray-700">{donation.description}</p>
             </div>
-            <div className="px-6 py-4 flex items-center justify-between">
+            <div className="flex items-center justify-between px-6 py-4">
               <span className="text-sm text-gray-600">Amount Donated: ${donation.amount}</span>
-              <span className="text-sm text-gray-600">Date: {new Date(donation.date).toLocaleDateString()}</span>
+              <span className="text-sm text-gray-600">
+                Date: {new Date(donation.date).toLocaleDateString()}
+              </span>
             </div>
           </div>
         ))}
@@ -67,3 +69,4 @@ const MyDonations = () => {
 };
 
 export default MyDonations;
+

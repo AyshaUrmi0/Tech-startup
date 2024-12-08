@@ -21,7 +21,7 @@ const UpdateCampaign = () => {
     }
 
     // Fetch the campaign data by ID
-    fetch(`http://localhost:4000/campaigns/${id}`)
+    fetch(`https://tech-spring-server.vercel.app/campaigns/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setCampaign(data);
@@ -64,7 +64,7 @@ const UpdateCampaign = () => {
       userEmail: user.email, // Attach user's email
     };
 
-    fetch(`http://localhost:4000/campaigns/${id}`, {
+    fetch(`https://tech-spring-server.vercel.app/campaigns/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

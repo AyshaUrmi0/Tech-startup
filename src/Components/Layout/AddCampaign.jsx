@@ -36,7 +36,7 @@ const AddCampaign = () => {
     };
 
     // Send the request
-    fetch('http://localhost:4000/addCampaigns', {
+    fetch('https://tech-spring-server.vercel.app/addCampaigns', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

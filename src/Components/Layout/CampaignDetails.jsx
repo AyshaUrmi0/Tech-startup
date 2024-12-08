@@ -12,7 +12,7 @@ const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations
   useEffect(() => {
     const fetchCampaign = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/campaign/${id}`);
+        const response = await fetch(`https://tech-spring-server.vercel.app/campaign/${id}`);
         if (!response.ok) {
           throw new Error("Failed to fetch campaign details");
         }
@@ -42,7 +42,7 @@ const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations
     };
 
     try {
-      const response = await fetch("http://localhost:4000/donations", {
+      const response = await fetch("https://tech-spring-server.vercel.app/donations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(donationData),

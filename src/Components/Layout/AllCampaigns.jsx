@@ -10,7 +10,7 @@ const AllCampaigns = () => {
   // Function to fetch campaigns with sorting
   const fetchCampaigns = async (sortByDesc) => {
     setLoading(true);
-    const response = await fetch(`http://localhost:4000/addCampaigns?sortByDesc=${sortByDesc}`);
+    const response = await fetch(`https://tech-spring-server.vercel.app/addCampaigns?sortByDesc=${sortByDesc}`);
     const data = await response.json();
     setCampaigns(data);
     setLoading(false);

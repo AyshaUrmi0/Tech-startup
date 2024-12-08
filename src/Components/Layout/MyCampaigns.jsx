@@ -19,7 +19,7 @@ const MyCampaigns = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:4000/campaigns/${user.email}`);
+        const response = await fetch(`https://tech-spring-server.vercel.app/campaigns/${user.email}`);
         if (!response.ok) {
           throw new Error("Failed to fetch campaigns.");
         }
@@ -44,7 +44,7 @@ const MyCampaigns = () => {
     const confirmDelete = window.confirm("Are you sure you want to delete this campaign?");
     if (confirmDelete) {
       try {
-        const response = await fetch(`http://localhost:4000/campaign/${campaignId}`, {
+        const response = await fetch(`https://tech-spring-server.vercel.app/campaign/${campaignId}`, {
           method: "DELETE",
         });
 
