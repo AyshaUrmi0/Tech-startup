@@ -4,7 +4,7 @@ TechSpring-Client is a web application designed to facilitate the funding of tec
 
 ## Live Link
 
-    [Live Link](https://techspring-ec865.web.app/)
+[Live Link](https://techspring-ec865.web.app/)
 
 ## Features
 
