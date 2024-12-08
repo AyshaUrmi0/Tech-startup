@@ -32,7 +32,7 @@ const Navbar = () => {
             onClick={toggleMenu}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="w-5 h-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor">
@@ -46,7 +46,7 @@ const Navbar = () => {
           </button>
           <ul
             tabIndex={0}
-            className={`menu menu-sm dropdown-content mt-3 w-52 p-2 shadow bg-base-100 rounded-box z-[1] ${
+            className={`menu menu-sm dropdown-content mt-3 w-52 p-2 shadow bg-base-100 rounded-box z-[999] ${
               isOpen ? "block" : "hidden"
             }`}>
             <li>
@@ -96,12 +96,12 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost text-xl">
+        <Link to="/" className="text-xl btn btn-ghost">
           TechSpring
         </Link>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
+      <div className="hidden navbar-center lg:flex">
+        <ul className="px-1 menu menu-horizontal">
           <li>
             <Link to="/">Home</Link>
           </li>
