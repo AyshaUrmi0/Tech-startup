@@ -19,12 +19,16 @@ const UpdateCampaign = () => {
       setIsLoading(false); // Stop loading if the user is not logged in
       return;
     }
+    console.log("User:", user);
+    console.log("Campaign ID:", id);
+    console.log("Campaign:", campaign);
 
     // Fetch the campaign data by ID
     fetch(`https://tech-spring-server.vercel.app/campaigns/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setCampaign(data);
+        console.log("Campaign data:", data);
         setFormData({
           image: data.image,
           title: data.title,
@@ -91,25 +95,25 @@ const UpdateCampaign = () => {
     return <Loading />;
   }
 
-//   // Show login prompt if user is not authenticated
-//   if (!user) {
-//     return (
-//       <div className="text-center mt-10">
-//         <h2 className="text-xl font-semibold">You must be logged in to access this page.</h2>
-//         <button
-//           className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
-//           onClick={() => navigate("/login")}
-//         >
-//           Go to Login
-//         </button>
-//       </div>
-//     );
-//   }
+  //   // Show login prompt if user is not authenticated
+  //   if (!user) {
+  //     return (
+  //       <div className="text-center mt-10">
+  //         <h2 className="text-xl font-semibold">You must be logged in to access this page.</h2>
+  //         <button
+  //           className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+  //           onClick={() => navigate("/login")}
+  //         >
+  //           Go to Login
+  //         </button>
+  //       </div>
+  //     );
+  //   }
 
-//   // Show an error message if the campaign data is not found
-//   if (!campaign) {
-//     return <div className="text-center">Campaign not found.</div>;
-//   }
+  //   // Show an error message if the campaign data is not found
+  //   if (!campaign) {
+  //     return <div className="text-center">Campaign not found.</div>;
+  //   }
 
   // Render the form for updating the campaign
   return (
@@ -162,12 +166,13 @@ const UpdateCampaign = () => {
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             rows="4"
-            required
-          ></textarea>
+            required></textarea>
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Minimum Donation</label>
+          <label className="block mb-1 text-sm font-medium">
+            Minimum Donation
+          </label>
           <input
             type="number"
             name="minimumDonation"
@@ -204,7 +209,9 @@ const UpdateCampaign = () => {
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">User Display Name</label>
+          <label className="block mb-1 text-sm font-medium">
+            User Display Name
+          </label>
           <input
             type="text"
             name="userName"
@@ -217,8 +224,7 @@ const UpdateCampaign = () => {
 
         <button
           type="submit"
-          className="w-full px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600 focus:ring-2 focus:ring-green-400 focus:outline-none"
-        >
+          className="w-full px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600 focus:ring-2 focus:ring-green-400 focus:outline-none">
           Update Campaign
         </button>
       </form>
