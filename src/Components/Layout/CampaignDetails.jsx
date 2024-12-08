@@ -4,7 +4,8 @@ import Loading from "./Loading";
 import { url } from "../../address";
 import { useAuth } from "../../Components/provider/AuthProvider"; // Import the hook
 
-const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations as a prop with a default value
+const CampaignDetails = ({ setDonations = () => {} }) => {
+  // Pass setDonations as a prop with a default value
   const { id } = useParams();
   const navigate = useNavigate();
   const { user, loading } = useAuth(); // Use the useAuth hook to get user data
@@ -13,7 +14,9 @@ const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations
   useEffect(() => {
     const fetchCampaign = async () => {
       try {
-        const response = await fetch(`https://tech-spring-server.vercel.app/campaign/${id}`);
+        const response = await fetch(
+          `https://tech-spring-server.vercel.app/campaign/${id}`
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch campaign details");
         }
@@ -40,8 +43,8 @@ const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations
       campaignTitle: campaign.title,
       userEmail: user.email,
       userName: user.displayName || user.email,
-      amount:user.minimumDonation
-       // fallback to email if displayName is not available
+      amount: campaign.minimumDonation,
+      // fallback to email if displayName is not available
     };
 
     try {
@@ -54,7 +57,7 @@ const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations
       if (response.ok) {
         alert("Thank you for your donation!");
         // After donation, refetch donations
-        setDonations(prev => [...prev, donationData]);  // Update the donations list
+        setDonations((prev) => [...prev, donationData]); // Update the donations list
       } else {
         alert("Failed to process donation. Please try again.");
       }
@@ -88,15 +91,16 @@ const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations
         <strong>Minimum Donation:</strong> ${campaign.minimumDonation}
       </p>
       <p>
-        <strong>Deadline:</strong> {new Date(campaign.deadline).toLocaleDateString()}
+        <strong>Deadline:</strong>{" "}
+        {new Date(campaign.deadline).toLocaleDateString()}
       </p>
       <p>
-        <strong>Organizer:</strong> {campaign.organizer?.name} ({campaign.organizer?.email})
+        <strong>Organizer:</strong> {campaign.organizer?.name} (
+        {campaign.organizer?.email})
       </p>
       <button
         onClick={handleDonate}
-        className="px-4 py-2 mt-4 text-white bg-teal-400 rounded"
-      >
+        className="px-4 py-2 mt-4 text-white bg-teal-400 rounded">
         Donate
       </button>
     </div>
@@ -104,4 +108,3 @@ const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations
 };
 
 export default CampaignDetails;
-
