@@ -76,7 +76,7 @@ const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations
       <img
         src={campaign.imageURL}
         alt={campaign.title}
-        className="w-full h-64 object-cover my-4"
+        className="object-cover w-full h-64 my-4"
       />
       <p>
         <strong>Description:</strong> {campaign.description}
@@ -92,7 +92,7 @@ const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations
       </p>
       <button
         onClick={handleDonate}
-        className="mt-4 bg-green-500 text-white px-4 py-2 rounded"
+        className="px-4 py-2 mt-4 text-white bg-teal-400 rounded"
       >
         Donate
       </button>

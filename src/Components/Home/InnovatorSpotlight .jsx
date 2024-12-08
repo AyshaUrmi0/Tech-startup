@@ -19,11 +19,11 @@ const InnovatorSpotlight = () => {
    ];
 
    return (
-       <section className="py-10 bg-gray-100">
+       <section className="py-10">
            <h2 className="mb-8 text-3xl font-bold text-center">Innovator Spotlight</h2>
            <div className="grid grid-cols-1 gap-8 px-4 md:grid-cols-2">
                {innovators.map((innovator, index) => (
-                   <div key={index} className="p-6 bg-white rounded-lg shadow-lg">
+                   <div key={index} className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
                        <img
                            src={innovator.photo}
                            alt={innovator.name}
@@ -32,12 +32,11 @@ const InnovatorSpotlight = () => {
                        <h3 className="mt-4 text-xl font-semibold text-center">{innovator.name}</h3>
                        <p className="text-center text-gray-600">{innovator.tagline}</p>
                        <p className="mt-4 text-gray-700">{innovator.story}</p>
-                       <a
-                           href={innovator.campaignLink}
-                           className="block px-4 py-2 mt-4 text-center text-white bg-blue-500 rounded hover:bg-blue-600"
+                       <button
+                           className="items-center justify-center w-full px-4 py-2 mt-4 text-center text-white bg-teal-400 rounded hover:bg-blue-600"
                        >
                            View Campaign
-                       </a>
+                       </button>
                    </div>
                ))}
            </div>
@@ -46,3 +45,4 @@ const InnovatorSpotlight = () => {
 };
 
 export default InnovatorSpotlight;
+

@@ -30,14 +30,14 @@ const FeaturedInnovators = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50 container mx-auto justify-center items-center">
+    <section className="container items-center justify-center py-16 mx-auto">
       <div className="container px-4 mx-auto">
         <div className="mb-12 text-center">
           <h2 className="text-4xl font-bold animate_animated animate_fadeInDown ">
             Featured Innovators
           </h2>
          
-          <p className="mt-4 text-gray-600 animate_animated animate_fadeInUp">
+          <p className="mt-4 animate_animated animate_fadeInUp">
             Meet the brilliant minds driving innovation! Learn about the creators and their journey
             as they turn groundbreaking ideas into reality.
           </p>
@@ -51,7 +51,7 @@ const FeaturedInnovators = () => {
                 index % 2 === 0 ? "animate_slideInLeft" : "animate_slideInRight"
               }`}
             >
-              <div className="absolute w-8 h-8 border-4 border-white rounded-full bg-primary -left-4"></div>
+              <div className="absolute w-8 h-8 bg-teal-400 border-4 border-white rounded-full -left-4"></div>
               <div className="p-6 bg-white rounded-lg shadow-lg">
                 <div className="flex items-center mb-4">
                   <img
@@ -60,12 +60,12 @@ const FeaturedInnovators = () => {
                     className="object-cover w-16 h-16 mr-4 rounded-full"
                   />
                   <div>
-                    <h3 className="text-xl font-bold">{innovator.name}</h3>
-                    <p className="text-gray-500">{innovator.title}</p>
+                    <h3 className="text-xl font-bold text-black">{innovator.name}</h3>
+                    <p className="text-black-500">{innovator.title}</p>
                   </div>
                 </div>
                 <p className="text-gray-700">{innovator.description}</p>
-                <a href="#" className="inline-block mt-4 font-semibold text-primary">
+                <a href="#" className="inline-block mt-4 font-semibold text-teal-400">
                   View {innovator.project} &rarr;
                 </a>
               </div>

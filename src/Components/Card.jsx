@@ -9,7 +9,7 @@ const Card = ({ item }) => {
   };
 
   return (
-    <div className="shadow-xl card bg-base-100 w-96">
+    <div className="bg-teal-100 shadow-xl card w-96">
       <figure className="px-10 pt-10">
         <img
           src={item.imageURL}
@@ -20,8 +20,9 @@ const Card = ({ item }) => {
       <div className="items-center text-center card-body">
         <h2 className="card-title">{item.title}</h2>
         <p>{item.description}</p>
+        <p>Deadline: {item.deadline}</p>
         <div className="card-actions">
-          <button onClick={handleSeeMore} className="btn btn-primary">
+          <button onClick={handleSeeMore} className="bg-teal-400 btn">
             See More
           </button>
         </div>

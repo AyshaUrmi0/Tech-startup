@@ -134,7 +134,7 @@ const AddCampaign = () => {
           <input
             type="text"
             value={user.displayName}
-            className="w-full px-4 py-2 bg-gray-100 border rounded-md focus:outline-none"
+            className="w-full px-4 py-2 text-black bg-gray-100 border rounded-md focus:outline-none"
             readOnly
           />
         </div>
@@ -144,14 +144,14 @@ const AddCampaign = () => {
           <input
             type="email"
             value={user.email}
-            className="w-full px-4 py-2 bg-gray-100 border rounded-md focus:outline-none"
+            className="w-full px-4 py-2 text-black bg-gray-100 border rounded-md focus:outline-none"
             readOnly
           />
         </div>
 
         <button
           type="submit"
-          className="w-full px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+          className="w-full px-4 py-2 text-white bg-teal-400 rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none"
         >
           Add Campaign
         </button>

@@ -28,12 +28,12 @@ const AllCampaigns = () => {
 
   return (
     <div className="p-5">
-      <h1 className="text-2xl font-bold mb-5">All Campaigns</h1>
+      <h1 className="mb-5 text-2xl font-bold">All Campaigns</h1>
       
       {/* Button to sort by descending order */}
       <button
         onClick={handleSort}
-        className="bg-teal-500 text-white px-4 py-2 rounded mb-5"
+        className="px-4 py-2 mb-5 text-white bg-teal-500 rounded"
       >
         Sort by Descending Order
       </button>
@@ -42,27 +42,27 @@ const AllCampaigns = () => {
         {loading ? (
           <Loading />
         ) : (
-          <table className="table-auto border-collapse border border-gray-300 w-full">
+          <table className="w-full border border-collapse border-gray-300 table-auto">
             <thead>
-              <tr className="bg-gray-200">
-                <th className="border border-gray-300 px-4 py-2">Title</th>
-                <th className="border border-gray-300 px-4 py-2">Minimum Donation</th>
-                <th className="border border-gray-300 px-4 py-2">Deadline</th>
-                <th className="border border-gray-300 px-4 py-2">Actions</th>
+              <tr className="bg-teal-400">
+                <th className="px-4 py-2 border border-gray-300">Title</th>
+                <th className="px-4 py-2 border border-gray-300">Minimum Donation</th>
+                <th className="px-4 py-2 border border-gray-300">Deadline</th>
+                <th className="px-4 py-2 border border-gray-300">Actions</th>
               </tr>
             </thead>
             <tbody>
               {campaigns.map((campaign) => (
                 <tr key={campaign._id} className="hover:bg-gray-100">
-                  <td className="border border-gray-300 px-4 py-2">{campaign.title}</td>
-                  <td className="border border-gray-300 px-4 py-2">${campaign.minimumDonation}</td>
-                  <td className="border border-gray-300 px-4 py-2">
+                  <td className="px-4 py-2 border border-gray-300">{campaign.title}</td>
+                  <td className="px-4 py-2 border border-gray-300">${campaign.minimumDonation}</td>
+                  <td className="px-4 py-2 border border-gray-300">
                     {new Date(campaign.deadline).toLocaleDateString()}
                   </td>
-                  <td className="border border-gray-300 px-4 py-2">
+                  <td className="px-4 py-2 border border-gray-300">
                     <button
                       onClick={() => navigate(`/campaign/${campaign._id}`)}
-                      className="bg-blue-500 text-white px-4 py-2 rounded"
+                      className="px-4 py-2 text-white bg-teal-400 rounded"
                     >
                       See More
                     </button>
