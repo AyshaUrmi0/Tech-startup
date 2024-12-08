@@ -36,10 +36,10 @@ const AddCampaign = () => {
     };
 
     // Send the request
-    fetch('https://tech-spring-server.vercel.app/addCampaigns', {
-      method: 'POST',
+    fetch("https://tech-spring-server.vercel.app/addCampaigns", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(newCampaign), // Send merged object
     })
@@ -47,27 +47,30 @@ const AddCampaign = () => {
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          toast.success('Campaign added successfully!');
+          toast.success("Campaign added successfully!");
           navigate("/myCampaigns"); // Navigate to MyCampaigns on success
         } else {
-          toast.error('Failed to add the campaign!');
+          toast.error("Failed to add the campaign!");
         }
       })
       .catch((error) => {
-        console.error('Error adding campaign:', error);
-        toast.error('Something went wrong!');
+        console.error("Error adding campaign:", error);
+        toast.error("Something went wrong!");
       });
   };
 
   return (
     <div className="max-w-lg px-4 py-8 mx-auto md:px-6 lg:px-8">
-      <h2 className="mb-4 text-2xl font-bold text-center md:text-left">Add New Campaign</h2>
+      <h2 className="mb-4 text-2xl font-bold text-center md:text-left">
+        Add New Campaign
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
           <label className="block mb-1 text-sm font-medium">Image URL</label>
           <input
             type="text"
             name="image"
+            style={{ color: "white" }}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             placeholder="Enter the image URL"
             required
@@ -75,10 +78,13 @@ const AddCampaign = () => {
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Campaign Title</label>
+          <label className="block mb-1 text-sm font-medium">
+            Campaign Title
+          </label>
           <input
             type="text"
             name="title"
+            style={{ color: "white" }}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             placeholder="Enter the campaign title"
             required
@@ -86,11 +92,13 @@ const AddCampaign = () => {
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Campaign Type</label>
+          <label className="block mb-1 text-sm font-medium">
+            Campaign Type
+          </label>
           <select
             name="type"
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-          >
+            style={{ color: "white" }}
+            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none">
             <option value="Personal Issue">Personal Issue</option>
             <option value="Startup">Startup</option>
             <option value="Business">Business</option>
@@ -102,17 +110,20 @@ const AddCampaign = () => {
           <label className="block mb-1 text-sm font-medium">Description</label>
           <textarea
             name="description"
+            style={{ color: "white" }}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             placeholder="Enter the campaign description"
-            required
-          ></textarea>
+            required></textarea>
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Minimum Donation Amount</label>
+          <label className="block mb-1 text-sm font-medium">
+            Minimum Donation Amount
+          </label>
           <input
             type="number"
             name="minimumDonation"
+            style={{ color: "white" }}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             placeholder="Enter the minimum donation amount"
             required
@@ -124,6 +135,7 @@ const AddCampaign = () => {
           <input
             type="date"
             name="deadline"
+            style={{ color: "white" }}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             required
           />
@@ -134,7 +146,8 @@ const AddCampaign = () => {
           <input
             type="text"
             value={user.displayName}
-            className="w-full px-4 py-2 text-black bg-gray-100 border rounded-md focus:outline-none"
+            style={{ color: "black" }}
+            className="w-full px-4 py-2 bg-gray-100 border rounded-md focus:outline-none"
             readOnly
           />
         </div>
@@ -144,15 +157,15 @@ const AddCampaign = () => {
           <input
             type="email"
             value={user.email}
-            className="w-full px-4 py-2 text-black bg-gray-100 border rounded-md focus:outline-none"
+            style={{ color: "black" }}
+            className="w-full px-4 py-2 bg-gray-100 border rounded-md focus:outline-none"
             readOnly
           />
         </div>
 
         <button
           type="submit"
-          className="w-full px-4 py-2 text-white bg-teal-400 rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none"
-        >
+          className="w-full px-4 py-2 bg-teal-400 rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none">
           Add Campaign
         </button>
       </form>
@@ -161,4 +174,3 @@ const AddCampaign = () => {
 };
 
 export default AddCampaign;
-
