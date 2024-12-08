@@ -35,10 +35,11 @@ const MyDonations = () => {
               <img className="w-full" src={donation.image} alt={donation.title} />
               <div className="px-6 py-4">
                 <h3 className="mb-2 text-xl font-bold">{donation.campaignTitle}</h3>
+                <p className="text-base text-gray-700">Amount: {donation.amount}</p> 
                 <p className="text-base text-gray-700">{donation.description}</p>
               </div>
               <div className="flex items-center justify-between px-6 py-4">
-                <span className="text-sm text-gray-600">Amount Donated: ${donation.amount}</span>
+                
                 <span className="text-sm text-gray-600">
                   Date: {new Date(donation.donationDate).toLocaleDateString()}
                 </span>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
+import { url } from "../../address";
 import { useAuth } from "../../Components/provider/AuthProvider"; // Import the hook
 
 const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations as a prop with a default value
@@ -38,11 +39,13 @@ const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations
       campaignId: campaign._id,
       campaignTitle: campaign.title,
       userEmail: user.email,
-      userName: user.displayName || user.email, // fallback to email if displayName is not available
+      userName: user.displayName || user.email,
+      amount:user.minimumDonation
+       // fallback to email if displayName is not available
     };
 
     try {
-      const response = await fetch("http://localhost:5000/donations", {
+      const response = await fetch(`${url}/donations`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(donationData),
