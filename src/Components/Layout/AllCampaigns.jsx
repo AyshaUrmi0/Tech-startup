@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Typewriter } from "react-simple-typewriter";
 import Loading from "./Loading";
 
 const AllCampaigns = () => {
@@ -28,7 +29,17 @@ const AllCampaigns = () => {
 
   return (
     <div className="p-5">
-      <h1 className="mb-5 text-2xl font-bold">All Campaigns</h1>
+    <h1 className="mb-5 text-2xl font-bold">
+        <Typewriter
+          words={["All Campaigns", "Sort the Campaigns according to minimum donation"]}
+          loop={false}
+          cursor
+          cursorStyle="|"
+          typeSpeed={100}
+          deleteSpeed={50}
+          delaySpeed={1000}
+        />
+      </h1>
       
       {/* Button to sort by descending order */}
       <button

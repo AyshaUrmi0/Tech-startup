@@ -8,7 +8,7 @@ const Test = () => {
 
     useEffect(() => {
         const fetchdata = async () => {
-            const response = await fetch('https://tech-spring-server.vercel.app/addCampaigns')
+            const response = await fetch('https://tech-spring-server.vercel.app/addCampaigns?filterByDate=true&limitToSix=true')
             const data = await response.json()
             // console.log(data)
             setstate(data)

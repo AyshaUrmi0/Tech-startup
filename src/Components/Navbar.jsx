@@ -2,19 +2,20 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars, FaTimes, FaMoon, FaSun } from 'react-icons/fa';
 import { useAuth } from '../Components/provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { user, logout, theme, toggleTheme } = useAuth(); // Access theme state and toggle function from context
+  const { user, logout, theme, toggleTheme } = useAuth(); 
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const handleLogout = async () => {
     try {
       await logout();
-      console.log('User logged out');
+      toast.success('User logged out');
     } catch (error) {
-      console.error('Logout error:', error);
+      toast.error('Logout error:', error);
     }
   };
 
@@ -171,7 +172,7 @@ const Navbar = () => {
         </div>
 
         {/* Theme Toggle for larger screens */}
-        <div className="hidden sm:flex items-center space-x-4">
+        <div className="items-center hidden space-x-4 sm:flex">
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme"

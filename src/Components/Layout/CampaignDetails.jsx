@@ -42,7 +42,7 @@ const CampaignDetails = ({ setDonations = () => {} }) => {  // Pass setDonations
     };
 
     try {
-      const response = await fetch("https://tech-spring-server.vercel.app/donations", {
+      const response = await fetch("http://localhost:5000/donations", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(donationData),
