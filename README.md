@@ -2,6 +2,10 @@
 
 TechSpring-Client is a web application designed to facilitate the funding of tech startups, creative ideas, and personal causes. This project serves as the client-side implementation of the TechSpring platform, providing users with the ability to explore campaigns, manage their own campaigns, and contribute through donations.
 
+## Live Link
+
+    [Live Link](https://techspring-ec865.web.app/)
+
 ## Features
 
 - **User Authentication:** Secure login and registration using Firebase Authentication.
@@ -23,6 +27,7 @@ TechSpring-Client is a web application designed to facilitate the funding of tec
 Below is a list of the main packages used in this project:
 
 ### Dependencies
+
 - animate.css
 - firebase
 - localforage
@@ -39,6 +44,7 @@ Below is a list of the main packages used in this project:
 - swiper
 
 ### DevDependencies
+
 - @eslint/js
 - @types/react
 - @types/react-dom
@@ -57,5 +63,4 @@ Below is a list of the main packages used in this project:
 ## Installation
 
 1. Clone the repository:
-    https://github.com/AyshaUrmi0/Tech-startup.git
-
+   https://github.com/AyshaUrmi0/Tech-startup.git
