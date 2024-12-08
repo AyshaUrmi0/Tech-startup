@@ -9,7 +9,7 @@ import AllCampaigns from './Layout/AllCampaigns';
 
 const Footer = () => {
   return (
-    <footer className="flex flex-col bg-gray-800 md:flex-row">
+    <footer className="flex flex-col md:flex-row">
       <div className="container px-4 py-8 mx-auto md:w-1/2">
         <h3 className="mb-4 text-xl font-bold text-teal-400">TulipCrowd</h3>
         <p className="text-gray-400">
