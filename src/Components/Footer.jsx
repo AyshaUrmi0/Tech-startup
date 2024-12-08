@@ -1,11 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
-import HomePage from './Layout/HomePage';
-import MyDonations from './Layout/MyDonations';
-import MyCampaigns from './Layout/MyCampaigns';
-import AddCampaign from './Layout/AddCampaign';
-import AllCampaigns from './Layout/AllCampaigns';
+import React from "react";
+import { Link } from "react-router-dom";
+import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -13,7 +8,8 @@ const Footer = () => {
       <div className="container px-4 py-8 mx-auto md:w-1/2">
         <h3 className="mb-4 text-xl font-bold text-teal-400">TulipCrowd</h3>
         <p className="text-gray-400">
-          TulipCrowd is your trusted platform for funding tech startups, creative ideas, and personal causes. Join us to make a difference.
+          TulipCrowd is your trusted platform for funding tech startups,
+          creative ideas, and personal causes. Join us to make a difference.
         </p>
       </div>
 
@@ -28,24 +24,21 @@ const Footer = () => {
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xl hover:text-teal-300"
-          >
+            className="text-xl hover:text-teal-300">
             <FaFacebookF />
           </a>
           <a
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xl hover:text-teal-300"
-          >
+            className="text-xl hover:text-teal-300">
             <FaTwitter />
           </a>
           <a
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xl hover:text-teal-300"
-          >
+            className="text-xl hover:text-teal-300">
             <FaInstagram />
           </a>
         </div>
@@ -60,12 +53,16 @@ const Footer = () => {
             </Link>
           </li>
           <li>
-            <Link to="/my-donations" className="text-gray-400 hover:text-teal-300">
+            <Link
+              to="/my-donations"
+              className="text-gray-400 hover:text-teal-300">
               My Donations
             </Link>
           </li>
           <li>
-            <Link to="/my-campaigns" className="text-gray-400 hover:text-teal-300">
+            <Link
+              to="/my-campaigns"
+              className="text-gray-400 hover:text-teal-300">
               My Campaigns
             </Link>
           </li>
@@ -85,8 +82,7 @@ const Footer = () => {
           />
           <button
             type="submit"
-            className="px-4 py-2 text-white bg-teal-400 rounded-lg hover:bg-teal-500"
-          >
+            className="px-4 py-2 text-white bg-teal-400 rounded-lg hover:bg-teal-500">
             Subscribe
           </button>
         </form>
