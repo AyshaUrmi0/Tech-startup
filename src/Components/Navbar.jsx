@@ -120,7 +120,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <div className="flex flex-col mt-4 sm:flex-row sm:items-center sm:space-x-4 sm:mt-0">
+        <div className="hidden md:flex flex-col mt-4 sm:flex-row sm:items-center sm:space-x-4 sm:mt-0">
           {user ? (
             <>
               {/* User Profile */}
