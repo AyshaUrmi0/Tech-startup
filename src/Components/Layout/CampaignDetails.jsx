@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import { url } from "../../address";
 import { useAuth } from "../../Components/provider/AuthProvider"; // Import the hook
+import { toast } from "react-toastify"; // Import react-toastify
+import "react-toastify/dist/ReactToastify.css"; // Import react-toastify CSS
 
 const CampaignDetails = ({ setDonations = () => {} }) => {
   // Pass setDonations as a prop with a default value
@@ -24,7 +26,7 @@ const CampaignDetails = ({ setDonations = () => {} }) => {
         setCampaign(data);
       } catch (error) {
         console.error(error);
-        alert("Unable to fetch campaign details. Redirecting to homepage.");
+        toast.error("Unable to fetch campaign details. Redirecting to homepage.");
         navigate("/");
       }
     };
@@ -33,8 +35,16 @@ const CampaignDetails = ({ setDonations = () => {} }) => {
 
   const handleDonate = async () => {
     if (!user) {
-      alert("Please log in to donate.");
+      toast.warn("Please log in to donate.");
       navigate("/login");
+      return;
+    }
+
+    const currentDate = new Date();
+    const campaignDeadline = new Date(campaign.deadline);
+
+    if (currentDate > campaignDeadline) {
+      toast.error("The campaign deadline is over. You cannot donate to this campaign.");
       return;
     }
 
@@ -55,15 +65,15 @@ const CampaignDetails = ({ setDonations = () => {} }) => {
       });
 
       if (response.ok) {
-        alert("Thank you for your donation!");
+        toast.success("Thank you for your donation!");
         // After donation, refetch donations
         setDonations((prev) => [...prev, donationData]); // Update the donations list
       } else {
-        alert("Failed to process donation. Please try again.");
+        toast.error("Failed to process donation. Please try again.");
       }
     } catch (error) {
       console.error("Error during donation:", error);
-      alert("An error occurred while processing your donation.");
+      toast.error("An error occurred while processing your donation.");
     }
   };
 
