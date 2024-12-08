@@ -18,6 +18,4 @@ TechSpring-Client is a web application designed to facilitate the funding of tec
 - **Backend API:** Hosted on Vercel
 - **Build Tool:** Vite
 
-5. Open your browser and navigate to `https://techspring-ec865.web.app/` to see the application in action.
-
-
+5. Open your browser and navigate to [Live Link](https://techspring-ec865.web.app/) to see the application in action.
