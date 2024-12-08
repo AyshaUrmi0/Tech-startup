@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <nav
       className={`navbar ${
-        theme === "dark" ? "bg-gray-800 text-white" : "bg-base-100 text-black"
+        theme === "dark" ? "bg-gray-800 text-white" : " text-black"
       } shadow-lg`}>
       <div className="navbar-start">
         <div className="dropdown">
