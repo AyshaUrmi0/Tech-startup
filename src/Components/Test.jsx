@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
+import { Zoom } from "react-awesome-reveal";
 
 
 const Test = () => {
@@ -19,6 +20,10 @@ const Test = () => {
     }, [])  
     return (
         <div className="my-7 ">
+            <Zoom>
+               <h2 className="mb-8 text-3xl font-bold text-center">Running Campaign..</h2>
+           </Zoom>
+           
         <div className="grid grid-cols-1 gap-3 text-black md:grid-cols-3 ">
            
         {state &&

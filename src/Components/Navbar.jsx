@@ -7,8 +7,7 @@ import { toast } from "react-toastify";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout, theme, toggleTheme } = useAuth();
-  const [isButtonActive, setButtonActive] = useState(false);
-
+ 
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const handleLogout = async () => {
