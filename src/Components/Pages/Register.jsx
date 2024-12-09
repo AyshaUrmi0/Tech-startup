@@ -31,11 +31,11 @@ const Register = () => {
     };
 
     return (
-        <div className="flex items-center justify-center h-screen">
+        <div className="flex items-center justify-center h-screen text-center">
             <form onSubmit={handleRegister} className="p-6 bg-white rounded shadow-md w-80">
-                <h2 className="mb-4 text-xl font-bold">Register</h2>
+                <h2 className="mb-4 text-xl font-bold"><span className= 'text-black '> Register </span></h2>
                 <input 
-                    type="text" 
+                    type="text"  
                     placeholder="Name" 
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -64,7 +64,7 @@ const Register = () => {
                 />
                 <button type="submit" className="w-full mb-4 btn btn-primary">Register</button>
                 <p className="mt-4 text-sm">
-                    Already have an account? <Link to="/login" className="text-blue-500">Login</Link>
+                   <span className='text-black'> Already have an account? </span><Link to="/login" className="text-blue-500">Login</Link>
                 </p>
             </form>
         </div>

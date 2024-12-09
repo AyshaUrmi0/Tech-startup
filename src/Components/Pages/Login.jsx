@@ -30,9 +30,9 @@ const Login = () => {
     };
 
     return (
-        <div className="flex items-center justify-center h-screen">
+        <div className="flex items-center justify-center h-screen text-center">
             <form onSubmit={handleLogin} className="p-6 bg-white rounded shadow-md w-80">
-                <h2 className="mb-4 text-xl font-bold">Login</h2>
+                <h2 className="mb-4 text-xl font-bold"><span className='text-black'> Login </span></h2>
                 <input 
                     type="email" 
                     placeholder="Email" 
@@ -50,7 +50,7 @@ const Login = () => {
                 <button type="submit" className="w-full mb-4 btn btn-primary">Login</button>
                 <button type="button" onClick={handleGoogleLogin} className="w-full btn btn-outline">Login with Google</button>
                 <p className="mt-4 text-sm">
-                    Don't have an account? <Link to="/register" className="text-blue-500">Register</Link>
+                   <span className='text-black'> Don't have an account?</span> <Link to="/register" className="text-blue-500">Register</Link>
                 </p>
             </form>
         </div>

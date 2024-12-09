@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout, theme, toggleTheme } = useAuth();
+  const [isButtonActive, setButtonActive] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -22,7 +23,7 @@ const Navbar = () => {
   return (
     <nav
       className={`navbar ${
-        theme === "dark" ? "bg-gray-800 text-white" : " text-black"
+        theme === "dark" ? "bg-teal-900 text-white" : " text-black"
       } shadow-lg`}>
       <div className="navbar-start">
         <div className="dropdown">
@@ -106,7 +107,8 @@ const Navbar = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/campaigns">All Campaigns</Link>
+            <Link to="/campaigns">
+            All Campaigns</Link>
           </li>
           <li>
             <Link to="/addCampaign">Add New Campaign</Link>
@@ -120,7 +122,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <div className="hidden md:flex flex-col mt-4 sm:flex-row sm:items-center sm:space-x-4 sm:mt-0">
+        <div className="flex-col hidden mt-4 md:flex sm:flex-row sm:items-center sm:space-x-4 sm:mt-0">
           {user ? (
             <>
               {/* User Profile */}
