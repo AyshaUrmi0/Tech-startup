@@ -9,7 +9,7 @@ const Card = ({ item }) => {
   };
 
   return (
-    <div className="bg-teal-100 shadow-xl card w-96">
+    <div className="w-11/12 mx-auto bg-teal-100 shadow-xl card">
       <figure className="px-10 pt-10">
         <img
           src={item.imageURL}
@@ -17,7 +17,7 @@ const Card = ({ item }) => {
           className="rounded-xl"
         />
       </figure>
-      <div className="items-center text-center card-body">
+      <div className="items-center card-body">
         <h2 className="card-title">{item.title}</h2>
         <p>{item.description}</p>
         <p>Deadline: {item.deadline}</p>

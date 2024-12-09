@@ -19,7 +19,7 @@ const Test = () => {
     }, [])  
     return (
         <div className="my-7 ">
-        <div className="flex flex-wrap items-center justify-center gap-3 text-black ">
+        <div className="grid grid-cols-1 gap-3 text-black md:grid-cols-3 ">
            
         {state &&
           state
