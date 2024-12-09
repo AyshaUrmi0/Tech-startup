@@ -1,4 +1,5 @@
 import React from "react";
+import { Fade, Zoom } from "react-awesome-reveal";
 
 const InnovatorSpotlight = () => {
    const innovators = [
@@ -20,24 +21,28 @@ const InnovatorSpotlight = () => {
 
    return (
        <section className="py-10">
-           <h2 className="mb-8 text-3xl font-bold text-center">Innovator Spotlight</h2>
+           <Zoom>
+               <h2 className="mb-8 text-3xl font-bold text-center">Innovator Spotlight</h2>
+           </Zoom>
            <div className="grid grid-cols-1 gap-8 px-4 md:grid-cols-2">
                {innovators.map((innovator, index) => (
-                   <div key={index} className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
-                       <img
-                           src={innovator.photo}
-                           alt={innovator.name}
-                           className="w-32 h-32 mx-auto rounded-full"
-                       />
-                       <h3 className="mt-4 text-xl font-semibold text-center">{innovator.name}</h3>
-                       <p className="text-center text-gray-600">{innovator.tagline}</p>
-                       <p className="mt-4 text-gray-700">{innovator.story}</p>
-                       <button
-                           className="items-center justify-center w-full px-4 py-2 mt-4 text-center text-white bg-teal-400 rounded hover:bg-blue-600"
-                       >
-                           View Campaign
-                       </button>
-                   </div>
+                   <Fade key={index} cascade damping={0.1} triggerOnce>
+                       <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
+                           <img
+                               src={innovator.photo}
+                               alt={innovator.name}
+                               className="w-32 h-32 mx-auto rounded-full"
+                           />
+                           <h3 className="mt-4 text-xl font-semibold text-center">{innovator.name}</h3>
+                           <p className="text-center text-gray-600">{innovator.tagline}</p>
+                           <p className="mt-4 text-gray-700">{innovator.story}</p>
+                           <button
+                               className="items-center justify-center w-full px-4 py-2 mt-4 text-center text-white bg-teal-400 rounded hover:bg-blue-600"
+                           >
+                               View Campaign
+                           </button>
+                       </div>
+                   </Fade>
                ))}
            </div>
        </section>
@@ -45,4 +50,3 @@ const InnovatorSpotlight = () => {
 };
 
 export default InnovatorSpotlight;
-
