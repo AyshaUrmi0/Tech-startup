@@ -41,7 +41,25 @@ const MyCampaigns = () => {
 
   const handleDelete = async (campaignId) => {
     // Confirm before deleting
-    const confirmDelete = window.confirm("Are you sure you want to delete this campaign?");
+    toast.warn("Are you sure you want to delete this campaign?", {
+      onClose: async () => {
+        try {
+          const response = await fetch(`https://tech-spring-server.vercel.app/campaign/${campaignId}`, {
+            method: "DELETE",
+          });
+
+          if (response.ok) {
+            setCampaigns(campaigns.filter((campaign) => campaign._id !== campaignId));
+            toast.success("Campaign deleted successfully.");
+          } else {
+            toast.error("Failed to delete the campaign.");
+          }
+        } catch (error) {
+          console.error("Error deleting campaign:", error);
+          toast.error("An error occurred while deleting the campaign.");
+        }
+      }
+    });
     if (confirmDelete) {
       try {
         const response = await fetch(`https://tech-spring-server.vercel.app/campaign/${campaignId}`, {
@@ -68,7 +86,7 @@ const MyCampaigns = () => {
 
   return (
     <div className="p-5">
-      <h1 className="text-2xl font-bold">My Campaigns</h1>
+      <h1 className="text-2xl font-bold ">My Campaigns</h1>
       {campaigns.length === 0 ? (
         <p>No campaigns found.</p>
       ) : (

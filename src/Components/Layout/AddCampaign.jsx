@@ -70,7 +70,7 @@ const AddCampaign = () => {
           <input
             type="text"
             name="image"
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             placeholder="Enter the image URL"
             required
@@ -84,7 +84,7 @@ const AddCampaign = () => {
           <input
             type="text"
             name="title"
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             placeholder="Enter the campaign title"
             required
@@ -97,7 +97,7 @@ const AddCampaign = () => {
           </label>
           <select
             name="type"
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none">
             <option value="Personal Issue">Personal Issue</option>
             <option value="Startup">Startup</option>
@@ -110,7 +110,7 @@ const AddCampaign = () => {
           <label className="block mb-1 text-sm font-medium">Description</label>
           <textarea
             name="description"
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             placeholder="Enter the campaign description"
             required></textarea>
@@ -123,7 +123,7 @@ const AddCampaign = () => {
           <input
             type="number"
             name="minimumDonation"
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             placeholder="Enter the minimum donation amount"
             required
@@ -135,7 +135,7 @@ const AddCampaign = () => {
           <input
             type="date"
             name="deadline"
-            style={{ color: "white" }}
+            style={{ color: "black" }}
             className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             required
           />
