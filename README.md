@@ -1,6 +1,8 @@
 # 🚀 TechSpring - Full-Stack Crowdfunding & Startup Funding Platform
 
 [![Live Web App](https://img.shields.io/badge/Live_App-TechSpring-0d9488?style=for-the-badge&logo=firebase&logoColor=white)](https://techspring-ec865.web.app/)
+[![Frontend Repository](https://img.shields.io/badge/Frontend_GitHub-Tech--startup-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AyshaUrmi0/Tech-startup)
+[![Backend Repository](https://img.shields.io/badge/Backend_GitHub-TechSpring--Server-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AyshaUrmi0/TechSpring-Server)
 [![Backend API](https://img.shields.io/badge/API_Server-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://tech-spring-server.vercel.app/)
 [![React](https://img.shields.io/badge/React_18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite_6-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
@@ -9,6 +11,15 @@
 [![Firebase](https://img.shields.io/badge/Firebase_Auth-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com/)
 
 TechSpring is a full-stack web application designed to empower tech startups, creative innovators, and personal causes to raise funding through community contributions. Built with **React 18**, **Vite**, **Tailwind CSS**, **Node.js/Express**, **MongoDB Atlas**, and **Firebase Authentication**.
+
+---
+
+## 🔗 Repositories & Live Links
+
+- 💻 **Frontend Repository**: [`https://github.com/AyshaUrmi0/Tech-startup`](https://github.com/AyshaUrmi0/Tech-startup)
+- ⚙️ **Backend Repository**: [`https://github.com/AyshaUrmi0/TechSpring-Server`](https://github.com/AyshaUrmi0/TechSpring-Server)
+- 🌐 **Live Web Application**: [`https://techspring-ec865.web.app/`](https://techspring-ec865.web.app/)
+- 📡 **Backend REST API**: [`https://tech-spring-server.vercel.app/`](https://tech-spring-server.vercel.app/)
 
 ---
 
@@ -38,12 +49,12 @@ graph TD
 
 ## 🛠️ Tech Stack
 
-| Domain | Technologies & Libraries |
-| :--- | :--- |
-| **Frontend** | React 18, Vite 6, Tailwind CSS, DaisyUI, React Router v6, React Awesome Reveal, Swiper, React Icons, Toastify |
-| **Backend** | Node.js, Express.js, MongoDB Node Driver, CORS, Dotenv |
-| **Authentication** | Firebase Authentication (Web SDK v11) |
-| **Hosting & CI/CD** | Firebase Hosting (Frontend), Vercel (Backend), GitHub Actions (CI/CD) |
+| Domain | Technologies & Libraries | Repository Link |
+| :--- | :--- | :--- |
+| **Frontend** | React 18, Vite 6, Tailwind CSS, DaisyUI, React Router v6, React Awesome Reveal, Swiper, React Icons, Toastify | [`Tech-startup`](https://github.com/AyshaUrmi0/Tech-startup) |
+| **Backend** | Node.js, Express.js, MongoDB Node Driver, CORS, Dotenv, MVC Architecture | [`TechSpring-Server`](https://github.com/AyshaUrmi0/TechSpring-Server) |
+| **Authentication** | Firebase Authentication (Web SDK v11) | — |
+| **Hosting & CI/CD** | Firebase Hosting (Frontend), Vercel (Backend), GitHub Actions (CI/CD) | — |
 
 ---
 
