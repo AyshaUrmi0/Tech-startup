@@ -1,5 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind CSS v4 — CSS-first configuration */
 
+/* Import Tailwind base styles */
+@import "tailwindcss";
 
+/* DaisyUI v5 — registered as a CSS plugin */
+@plugin "daisyui";
+
+/* Dark mode — class-based (matches previous config) */
+@variant dark (&:where([data-theme=dark], [data-theme=dark] *));
