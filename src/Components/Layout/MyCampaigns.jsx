@@ -85,48 +85,52 @@ const MyCampaigns = () => {
   }
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-bold ">My Campaigns</h1>
+    <div className="max-w-7xl mx-auto p-6 md:p-10">
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">My Campaigns</h1>
       {campaigns.length === 0 ? (
-        <p>No campaigns found.</p>
+        <div className="p-8 text-center bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
+          <p className="text-gray-600 dark:text-gray-300 text-lg">No campaigns found. Start by creating a new campaign!</p>
+        </div>
       ) : (
-        <table className="w-full mt-4 border border-collapse border-gray-300 table-auto">
-          <thead>
-            <tr className="bg-gray-200">
-              <th className="px-4 py-2 border border-gray-300">Title</th>
-              <th className="px-4 py-2 border border-gray-300">Description</th>
-              <th className="px-4 py-2 border border-gray-300">Deadline</th>
-              <th className="px-4 py-2 border border-gray-300">Minimum Donation</th>
-              <th className="px-4 py-2 border border-gray-300">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {campaigns.map((campaign) => (
-              <tr key={campaign._id}>
-                <td className="px-4 py-2 border border-gray-300">{campaign.title}</td>
-                <td className="px-4 py-2 border border-gray-300">{campaign.description}</td>
-                <td className="px-4 py-2 border border-gray-300">
-                  {new Date(campaign.deadline).toLocaleDateString()}
-                </td>
-                <td className="px-4 py-2 border border-gray-300">${campaign.minimumDonation}</td>
-                <td className="px-4 py-2 border border-gray-300">
-                  <button
-                    onClick={() => handleUpdate(campaign._id)}
-                    className="px-4 py-2 mr-2 text-white bg-blue-500 rounded"
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => handleDelete(campaign._id)}
-                    className="px-4 py-2 text-white bg-red-500 rounded"
-                  >
-                    Delete
-                  </button>
-                </td>
+        <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 shadow-md">
+          <table className="w-full text-left border-collapse table-auto">
+            <thead>
+              <tr className="bg-teal-600 dark:bg-teal-900 text-white">
+                <th className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 font-semibold">Title</th>
+                <th className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 font-semibold">Description</th>
+                <th className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 font-semibold">Deadline</th>
+                <th className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 font-semibold">Min Donation</th>
+                <th className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 font-semibold">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-800 text-gray-900 dark:text-gray-100">
+              {campaigns.map((campaign) => (
+                <tr key={campaign._id} className="hover:bg-teal-50/50 dark:hover:bg-gray-800/70 transition-colors">
+                  <td className="px-6 py-4 font-semibold">{campaign.title}</td>
+                  <td className="px-6 py-4 text-gray-600 dark:text-gray-300 max-w-xs truncate">{campaign.description}</td>
+                  <td className="px-6 py-4 text-gray-600 dark:text-gray-300 whitespace-nowrap">
+                    {new Date(campaign.deadline).toLocaleDateString()}
+                  </td>
+                  <td className="px-6 py-4 text-teal-600 dark:text-teal-400 font-bold">${campaign.minimumDonation}</td>
+                  <td className="px-6 py-4 space-x-2 whitespace-nowrap">
+                    <button
+                      onClick={() => handleUpdate(campaign._id)}
+                      className="px-3 py-1.5 text-xs font-medium text-white bg-amber-500 hover:bg-amber-600 rounded-md transition-colors"
+                    >
+                      Update
+                    </button>
+                    <button
+                      onClick={() => handleDelete(campaign._id)}
+                      className="px-3 py-1.5 text-xs font-medium text-white bg-rose-600 hover:bg-rose-700 rounded-md transition-colors"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

@@ -12,7 +12,25 @@ const AuthProvider = ({ children }) => {
   const auth = getAuth(app);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [theme, setTheme] = useState('light'); // Add theme state
+  
+  // Initialize theme from localStorage or system preferences
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) return savedTheme;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+      root.setAttribute('data-theme', 'dark');
+    } else {
+      root.classList.remove('dark');
+      root.setAttribute('data-theme', 'light');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -30,11 +48,8 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ user, loading, logout, theme, toggleTheme }}>
-      {/* Theme applied globally */}
-      <div className={theme === 'dark' ? 'dark' : ''}>
-        <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
-          {children}
-        </div>
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+        {children}
       </div>
     </AuthContext.Provider>
   );

@@ -28,8 +28,8 @@ const AllCampaigns = () => {
   };
 
   return (
-    <div className="p-5">
-    <h1 className="mb-5 text-2xl font-bold">
+    <div className="max-w-7xl mx-auto p-6 md:p-10">
+      <h1 className="mb-6 text-3xl font-bold text-gray-900 dark:text-white">
         <Typewriter
           words={["All Campaigns", "Sort the Campaigns according to minimum donation"]}
           loop={false}
@@ -44,36 +44,36 @@ const AllCampaigns = () => {
       {/* Button to sort by descending order */}
       <button
         onClick={handleSort}
-        className="px-4 py-2 mb-5 text-white bg-teal-500 rounded"
+        className="px-5 py-2.5 mb-6 text-white font-medium bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 rounded-lg shadow-sm transition-colors"
       >
         Sort by Descending Order
       </button>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto rounded-xl border border-gray-200 dark:border-gray-700 shadow-md">
         {loading ? (
           <Loading />
         ) : (
-          <table className="w-full border border-collapse border-gray-300 table-auto">
+          <table className="w-full text-left border-collapse table-auto">
             <thead>
-              <tr className="bg-teal-400">
-                <th className="px-4 py-2 border border-gray-300">Title</th>
-                <th className="px-4 py-2 border border-gray-300">Minimum Donation</th>
-                <th className="px-4 py-2 border border-gray-300">Deadline</th>
-                <th className="px-4 py-2 border border-gray-300">Actions</th>
+              <tr className="bg-teal-600 dark:bg-teal-900 text-white">
+                <th className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 font-semibold">Title</th>
+                <th className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 font-semibold">Minimum Donation</th>
+                <th className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 font-semibold">Deadline</th>
+                <th className="px-6 py-4 border-b border-gray-200 dark:border-gray-700 font-semibold">Actions</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-800 text-gray-900 dark:text-gray-100">
               {campaigns.map((campaign) => (
-                <tr key={campaign._id} className="hover:bg-gray-100">
-                  <td className="px-4 py-2 border border-gray-300">{campaign.title}</td>
-                  <td className="px-4 py-2 border border-gray-300">${campaign.minimumDonation}</td>
-                  <td className="px-4 py-2 border border-gray-300">
+                <tr key={campaign._id} className="hover:bg-teal-50/50 dark:hover:bg-gray-800/70 transition-colors">
+                  <td className="px-6 py-4 font-medium">{campaign.title}</td>
+                  <td className="px-6 py-4 text-teal-600 dark:text-teal-400 font-bold">${campaign.minimumDonation}</td>
+                  <td className="px-6 py-4 text-gray-600 dark:text-gray-300">
                     {new Date(campaign.deadline).toLocaleDateString()}
                   </td>
-                  <td className="px-4 py-2 border border-gray-300">
+                  <td className="px-6 py-4">
                     <button
                       onClick={() => navigate(`/campaign/${campaign._id}`)}
-                      className="px-4 py-2 text-white bg-teal-400 rounded"
+                      className="px-4 py-2 text-sm font-medium text-white bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 rounded-md transition-colors"
                     >
                       See More
                     </button>

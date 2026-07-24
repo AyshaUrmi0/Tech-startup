@@ -9,20 +9,20 @@ const Card = ({ item }) => {
   };
 
   return (
-    <div className="w-11/12 mx-auto bg-teal-100 shadow-xl card">
-      <figure className="px-10 pt-10">
+    <div className="w-11/12 mx-auto bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl rounded-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
+      <figure className="p-4">
         <img
           src={item.image || item.imageURL}
           alt={item.title}
-          className="w-full h-48 object-cover rounded-xl"
+          className="w-full h-48 object-cover rounded-xl shadow-sm"
         />
       </figure>
-      <div className="items-center card-body">
-        <h2 className="card-title">{item.title}</h2>
-        <p>{item.description}</p>
-        <p>Deadline: {item.deadline}</p>
-        <div className="card-actions">
-          <button onClick={handleSeeMore} className="bg-teal-400 btn">
+      <div className="px-6 py-4 flex flex-col flex-grow items-center text-center">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{item.title}</h2>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-3 line-clamp-2">{item.description}</p>
+        <p className="text-xs font-semibold text-teal-600 dark:text-teal-400 mb-4">Deadline: {item.deadline}</p>
+        <div className="mt-auto">
+          <button onClick={handleSeeMore} className="px-5 py-2 font-medium text-white bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 rounded-lg transition-colors shadow-sm">
             See More
           </button>
         </div>

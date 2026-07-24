@@ -34,15 +34,15 @@ const FeaturedInnovators = () => {
       <div className="container px-4 mx-auto">
         <Fade direction="down" triggerOnce>
           <div className="mb-12 text-center">
-            <h2 className="text-4xl font-bold">Featured Innovators</h2>
-            <p className="mt-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Featured Innovators</h2>
+            <p className="mt-4 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Meet the brilliant minds driving innovation! Learn about the creators and their journey
               as they turn groundbreaking ideas into reality.
             </p>
           </div>
         </Fade>
 
-        <div className="relative border-l border-gray-300">
+        <div className="relative border-l border-teal-300 dark:border-teal-700">
           {innovators.map((innovator, index) => (
             <Slide
               direction={index % 2 === 0 ? "left" : "right"}
@@ -50,23 +50,23 @@ const FeaturedInnovators = () => {
               key={innovator.id}
             >
               <div className="mb-10 ml-8">
-                <div className="absolute w-8 h-8 bg-teal-400 border-4 border-white rounded-full -left-4"></div>
-                <div className="p-6 bg-white rounded-lg shadow-lg">
+                <div className="absolute w-8 h-8 bg-teal-500 border-4 border-white dark:border-gray-900 rounded-full -left-4 shadow-sm"></div>
+                <div className="p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md hover:shadow-lg transition-shadow">
                   <div className="flex items-center mb-4">
                     <img
                       src={innovator.image}
                       alt={innovator.name}
-                      className="object-cover w-16 h-16 mr-4 rounded-full"
+                      className="object-cover w-16 h-16 mr-4 rounded-full ring-2 ring-teal-400"
                     />
                     <div>
-                      <h3 className="text-xl font-bold text-black">{innovator.name}</h3>
-                      <p className="text-black-500">{innovator.title}</p>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-white">{innovator.name}</h3>
+                      <p className="text-teal-600 dark:text-teal-400 font-medium text-sm">{innovator.title}</p>
                     </div>
                   </div>
-                  <p className="text-gray-700">{innovator.description}</p>
-                  <a href="#" className="inline-block mt-4 font-semibold text-teal-400">
+                  <p className="text-gray-600 dark:text-gray-300">{innovator.description}</p>
+                  <span className="inline-block mt-4 font-semibold text-teal-600 dark:text-teal-400 hover:underline cursor-pointer">
                     View {innovator.project} &rarr;
-                  </a>
+                  </span>
                 </div>
               </div>
             </Slide>

@@ -60,45 +60,42 @@ const AddCampaign = () => {
   };
 
   return (
-    <div className="max-w-lg px-4 py-8 mx-auto md:px-6 lg:px-8">
-      <h2 className="mb-4 text-2xl font-bold text-center md:text-left">
+    <div className="max-w-2xl px-6 py-8 mx-auto my-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl transition-colors duration-300">
+      <h2 className="mb-6 text-3xl font-bold text-center text-gray-900 dark:text-white">
         Add New Campaign
       </h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <label className="block mb-1 text-sm font-medium">Image URL</label>
+          <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">Image URL</label>
           <input
             type="text"
             name="image"
-            style={{ color: "black" }}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors"
             placeholder="Enter the image URL"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">
+          <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">
             Campaign Title
           </label>
           <input
             type="text"
             name="title"
-            style={{ color: "black" }}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors"
             placeholder="Enter the campaign title"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">
+          <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">
             Campaign Type
           </label>
           <select
             name="type"
-            style={{ color: "black" }}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none">
+            className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors">
             <option value="Personal Issue">Personal Issue</option>
             <option value="Startup">Startup</option>
             <option value="Business">Business</option>
@@ -107,65 +104,63 @@ const AddCampaign = () => {
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Description</label>
+          <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">Description</label>
           <textarea
             name="description"
-            style={{ color: "black" }}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            rows="4"
+            className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors"
             placeholder="Enter the campaign description"
             required></textarea>
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">
-            Minimum Donation Amount
+          <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">
+            Minimum Donation Amount ($)
           </label>
           <input
             type="number"
             name="minimumDonation"
-            style={{ color: "black" }}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors"
             placeholder="Enter the minimum donation amount"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Deadline</label>
+          <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">Deadline</label>
           <input
             type="date"
             name="deadline"
-            style={{ color: "black" }}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors"
             required
           />
         </div>
 
-        <div>
-          <label className="block mb-1 text-sm font-medium">User Name</label>
-          <input
-            type="text"
-            value={user.displayName}
-            style={{ color: "black" }}
-            className="w-full px-4 py-2 bg-gray-100 border rounded-md focus:outline-none"
-            readOnly
-          />
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">User Name</label>
+            <input
+              type="text"
+              value={user?.displayName || ""}
+              className="w-full px-4 py-2.5 bg-gray-100 dark:bg-gray-900/60 text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-700 rounded-lg cursor-not-allowed"
+              readOnly
+            />
+          </div>
 
-        <div>
-          <label className="block mb-1 text-sm font-medium">User Email</label>
-          <input
-            type="email"
-            value={user.email}
-            style={{ color: "black" }}
-            className="w-full px-4 py-2 bg-gray-100 border rounded-md focus:outline-none"
-            readOnly
-          />
+          <div>
+            <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">User Email</label>
+            <input
+              type="email"
+              value={user?.email || ""}
+              className="w-full px-4 py-2.5 bg-gray-100 dark:bg-gray-900/60 text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-700 rounded-lg cursor-not-allowed"
+              readOnly
+            />
+          </div>
         </div>
 
         <button
           type="submit"
-          className="w-full px-4 py-2 bg-teal-400 rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400 focus:outline-none">
+          className="w-full py-3 font-semibold text-white bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 rounded-lg transition-colors shadow-md mt-4">
           Add Campaign
         </button>
       </form>

@@ -87,31 +87,34 @@ const CampaignDetails = ({ setDonations = () => {} }) => {
   }
 
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-bold">{campaign.title}</h1>
+    <div className="max-w-4xl mx-auto my-10 p-6 md:p-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl transition-colors duration-300">
+      <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{campaign.title}</h1>
       <img
-        src={campaign.imageURL}
+        src={campaign.image || campaign.imageURL}
         alt={campaign.title}
-        className="object-cover w-full h-64 my-4"
+        className="object-cover w-full h-80 my-4 rounded-xl shadow-md"
       />
-      <p>
-        <strong>Description:</strong> {campaign.description}
-      </p>
-      <p>
-        <strong>Minimum Donation:</strong> ${campaign.minimumDonation}
-      </p>
-      <p>
-        <strong>Deadline:</strong>{" "}
-        {new Date(campaign.deadline).toLocaleDateString()}
-      </p>
-      <p>
-        <strong>Organizer:</strong> {campaign.organizer?.name} (
-        {campaign.organizer?.email})
-      </p>
+      <div className="space-y-3 text-gray-700 dark:text-gray-200 mt-6 text-base">
+        <p className="leading-relaxed">
+          <strong className="text-gray-900 dark:text-white">Description:</strong> {campaign.description}
+        </p>
+        <p>
+          <strong className="text-gray-900 dark:text-white">Minimum Donation:</strong> <span className="text-teal-600 dark:text-teal-400 font-bold">${campaign.minimumDonation}</span>
+        </p>
+        <p>
+          <strong className="text-gray-900 dark:text-white">Deadline:</strong>{" "}
+          {new Date(campaign.deadline).toLocaleDateString()}
+        </p>
+        {(campaign.organizer || campaign.userName) && (
+          <p>
+            <strong className="text-gray-900 dark:text-white">Organizer:</strong> {campaign.organizer?.name || campaign.userName} ({campaign.organizer?.email || campaign.userEmail})
+          </p>
+        )}
+      </div>
       <button
         onClick={handleDonate}
-        className="px-4 py-2 mt-4 text-white bg-teal-400 rounded">
-        Donate
+        className="w-full sm:w-auto px-8 py-3 mt-6 font-semibold text-white bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 rounded-lg transition-colors shadow-md">
+        Donate Now
       </button>
     </div>
   );

@@ -20,15 +20,12 @@ const Navbar = () => {
   };
 
   return (
-    <nav
-      className={`navbar ${
-        theme === "dark" ? "bg-teal-900 text-white" : " text-black"
-      } shadow-lg`}>
+    <nav className="navbar bg-white dark:bg-gray-900 text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 shadow-md transition-colors duration-300">
       <div className="navbar-start">
         <div className="dropdown">
           <button
             tabIndex={0}
-            className="btn btn-ghost lg:hidden"
+            className="btn btn-ghost lg:hidden text-gray-800 dark:text-gray-200"
             onClick={toggleMenu}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +43,7 @@ const Navbar = () => {
           </button>
           <ul
             tabIndex={0}
-            className={`menu menu-sm dropdown-content mt-3 w-52 p-2 shadow bg-base-100 rounded-box z-[9999] ${
+            className={`menu menu-sm dropdown-content mt-3 w-52 p-2 shadow-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-box z-[9999] ${
               isOpen ? "block" : "hidden"
             }`}>
             <li>
@@ -96,42 +93,42 @@ const Navbar = () => {
             )}
           </ul>
         </div>
-        <Link to="/" className="text-xl btn btn-ghost">
+        <Link to="/" className="text-xl font-bold text-teal-600 dark:text-teal-400 btn btn-ghost">
           TechSpring
         </Link>
       </div>
       <div className="hidden navbar-center lg:flex">
-        <ul className="px-1 menu menu-horizontal">
+        <ul className="px-1 menu menu-horizontal font-medium text-gray-700 dark:text-gray-200 space-x-1">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" className="hover:text-teal-600 dark:hover:text-teal-400">Home</Link>
           </li>
           <li>
-            <Link to="/campaigns">
+            <Link to="/campaigns" className="hover:text-teal-600 dark:hover:text-teal-400">
             All Campaigns</Link>
           </li>
           <li>
-            <Link to="/addCampaign">Add New Campaign</Link>
+            <Link to="/addCampaign" className="hover:text-teal-600 dark:hover:text-teal-400">Add New Campaign</Link>
           </li>
           <li>
-            <Link to="/myCampaigns">My Campaigns</Link>
+            <Link to="/myCampaigns" className="hover:text-teal-600 dark:hover:text-teal-400">My Campaigns</Link>
           </li>
           <li>
-            <Link to="/myDonations">My Donations</Link>
+            <Link to="/myDonations" className="hover:text-teal-600 dark:hover:text-teal-400">My Donations</Link>
           </li>
         </ul>
       </div>
-      <div className="navbar-end">
-        <div className="flex-col hidden mt-4 md:flex sm:flex-row sm:items-center sm:space-x-4 sm:mt-0">
+      <div className="navbar-end space-x-3">
+        <div className="flex-col hidden mt-4 md:flex sm:flex-row sm:items-center sm:space-x-3 sm:mt-0">
           {user ? (
             <>
               {/* User Profile */}
               <div className="relative group">
                 <img
-                  src={user.photoURL || "/default-user.png"}
+                  src={user.photoURL || "https://img.icons8.com/color/96/user-male-circle--v1.png"}
                   alt="User"
-                  className="w-8 h-8 rounded-full cursor-pointer"
+                  className="w-9 h-9 rounded-full cursor-pointer ring-2 ring-teal-500"
                 />
-                <div className="absolute z-10 hidden w-32 px-4 py-2 mt-2 text-sm text-center text-white bg-gray-800 rounded-lg shadow-lg group-hover:block">
+                <div className="absolute right-0 z-10 hidden w-36 px-3 py-2 mt-2 text-xs font-semibold text-center text-white bg-gray-900 rounded-lg shadow-lg group-hover:block border border-gray-700">
                   {user.displayName || "User"}
                 </div>
               </div>
@@ -139,11 +136,7 @@ const Navbar = () => {
               {/* Logout Button */}
               <button
                 onClick={handleLogout}
-                className={`px-4 py-2 text-center rounded-lg ${
-                  theme === "dark"
-                    ? "bg-teal-400 hover:bg-teal-500"
-                    : "bg-teal-600 hover:bg-teal-700 text-black"
-                }`}>
+                className="px-4 py-2 font-medium text-white bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 rounded-lg transition-colors shadow-sm">
                 Log Out
               </button>
             </>
@@ -151,21 +144,13 @@ const Navbar = () => {
             <>
               <Link
                 to="/login"
-                className={`block px-4 py-2 text-center rounded-lg ${
-                  theme === "dark"
-                    ? "bg-teal-400 hover:bg-teal-500"
-                    : "bg-teal-600 hover:bg-teal-700 text-white"
-                }`}
+                className="px-4 py-2 font-medium text-white bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 rounded-lg transition-colors shadow-sm"
                 onClick={() => setIsOpen(false)}>
                 Log In
               </Link>
               <Link
                 to="/register"
-                className={`block px-4 py-2 text-center rounded-lg ${
-                  theme === "dark"
-                    ? "bg-teal-400 hover:bg-teal-500"
-                    : "bg-teal-600 hover:bg-teal-700 text-white"
-                }`}
+                className="px-4 py-2 font-medium text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors border border-gray-300 dark:border-gray-700 shadow-sm"
                 onClick={() => setIsOpen(false)}>
                 Register
               </Link>
@@ -176,7 +161,7 @@ const Navbar = () => {
         <button
           onClick={toggleTheme}
           aria-label="Toggle theme"
-          className="btn btn-ghost">
+          className="btn btn-ghost btn-circle text-amber-500 dark:text-teal-400 text-lg hover:bg-gray-100 dark:hover:bg-gray-800">
           {theme === "light" ? <FaMoon /> : <FaSun />}
         </button>
       </div>

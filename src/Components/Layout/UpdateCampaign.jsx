@@ -117,114 +117,113 @@ const UpdateCampaign = () => {
 
   // Render the form for updating the campaign
   return (
-    <div className="max-w-lg px-4 py-8 mx-auto md:px-6 lg:px-8">
-      <h2 className="mb-4 text-2xl font-bold text-center md:text-left">
+    <div className="max-w-2xl px-6 py-8 mx-auto my-10 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl transition-colors duration-300">
+      <h2 className="mb-6 text-3xl font-bold text-center text-gray-900 dark:text-white">
         Update Campaign
       </h2>
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <label className="block mb-1 text-sm font-medium">Image URL</label>
+          <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">Image URL</label>
           <input
             type="text"
             name="image"
             value={formData.image || ""}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Title</label>
+          <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">Title</label>
           <input
             type="text"
             name="title"
             value={formData.title || ""}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Type</label>
+          <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">Type</label>
           <input
             type="text"
             name="type"
             value={formData.type || ""}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Description</label>
+          <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">Description</label>
           <textarea
             name="description"
             value={formData.description || ""}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors"
             rows="4"
             required></textarea>
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">
-            Minimum Donation
+          <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">
+            Minimum Donation ($)
           </label>
           <input
             type="number"
             name="minimumDonation"
             value={formData.minimumDonation || ""}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors"
             required
           />
         </div>
 
         <div>
-          <label className="block mb-1 text-sm font-medium">Deadline</label>
+          <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">Deadline</label>
           <input
             type="date"
             name="deadline"
             value={formData.deadline || ""}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full px-4 py-2.5 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-700 rounded-lg focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors"
             required
           />
         </div>
 
-        {/* Readonly email and displayName fields */}
-        <div>
-          <label className="block mb-1 text-sm font-medium">User Email</label>
-          <input
-            type="email"
-            name="userEmail"
-            value={formData.userEmail || ""}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            readOnly
-          />
-        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">User Email</label>
+            <input
+              type="email"
+              name="userEmail"
+              value={formData.userEmail || ""}
+              className="w-full px-4 py-2.5 bg-gray-100 dark:bg-gray-900/60 text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-700 rounded-lg cursor-not-allowed"
+              readOnly
+            />
+          </div>
 
-        <div>
-          <label className="block mb-1 text-sm font-medium">
-            User Display Name
-          </label>
-          <input
-            type="text"
-            name="userName"
-            value={formData.userName || ""}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
-            readOnly
-          />
+          <div>
+            <label className="block mb-1.5 text-sm font-semibold text-gray-700 dark:text-gray-200">
+              User Display Name
+            </label>
+            <input
+              type="text"
+              name="userName"
+              value={formData.userName || ""}
+              className="w-full px-4 py-2.5 bg-gray-100 dark:bg-gray-900/60 text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-700 rounded-lg cursor-not-allowed"
+              readOnly
+            />
+          </div>
         </div>
 
         <button
           type="submit"
-          className="w-full px-4 py-2 text-white bg-green-500 rounded-md hover:bg-green-600 focus:ring-2 focus:ring-green-400 focus:outline-none">
+          className="w-full py-3 font-semibold text-white bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 rounded-lg transition-colors shadow-md mt-4">
           Update Campaign
         </button>
       </form>

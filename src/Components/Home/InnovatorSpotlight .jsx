@@ -19,34 +19,34 @@ const InnovatorSpotlight = () => {
        },
    ];
 
-   return (
-       <section className="py-10">
-           <Zoom>
-               <h2 className="mb-8 text-3xl font-bold text-center">Innovator Spotlight</h2>
-           </Zoom>
-           <div className="grid grid-cols-1 gap-8 px-4 md:grid-cols-2">
-               {innovators.map((innovator, index) => (
-                   <Fade key={index} cascade damping={0.1} triggerOnce>
-                       <div className="flex flex-col items-center p-6 bg-white rounded-lg shadow-lg">
-                           <img
-                               src={innovator.photo}
-                               alt={innovator.name}
-                               className="w-32 h-32 mx-auto rounded-full"
-                           />
-                           <h3 className="mt-4 text-xl font-semibold text-center">{innovator.name}</h3>
-                           <p className="text-center text-gray-600">{innovator.tagline}</p>
-                           <p className="mt-4 text-gray-700">{innovator.story}</p>
-                           <button
-                               className="items-center justify-center w-full px-4 py-2 mt-4 text-center text-white bg-teal-400 rounded hover:bg-blue-600"
-                           >
-                               View Campaign
-                           </button>
-                       </div>
-                   </Fade>
-               ))}
-           </div>
-       </section>
-   );
+    return (
+        <section className="py-12 px-4 max-w-6xl mx-auto">
+            <Zoom>
+                <h2 className="mb-8 text-3xl font-bold text-center text-gray-900 dark:text-white">Innovator Spotlight</h2>
+            </Zoom>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                {innovators.map((innovator, index) => (
+                    <Fade key={index} cascade damping={0.1} triggerOnce>
+                        <div className="flex flex-col items-center p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md hover:shadow-xl transition-shadow">
+                            <img
+                                src={innovator.photo}
+                                alt={innovator.name}
+                                className="w-28 h-28 mx-auto rounded-full object-cover ring-4 ring-teal-400 dark:ring-teal-500 shadow-md"
+                            />
+                            <h3 className="mt-4 text-xl font-bold text-center text-gray-900 dark:text-white">{innovator.name}</h3>
+                            <p className="text-center text-teal-600 dark:text-teal-400 font-medium text-sm mt-1">{innovator.tagline}</p>
+                            <p className="mt-4 text-gray-600 dark:text-gray-300 text-center text-sm leading-relaxed">{innovator.story}</p>
+                            <button
+                                className="w-full px-4 py-2 mt-6 font-medium text-center text-white bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 rounded-lg transition-colors shadow-sm"
+                            >
+                                View Campaign
+                            </button>
+                        </div>
+                    </Fade>
+                ))}
+            </div>
+        </section>
+    );
 };
 
 export default InnovatorSpotlight;
