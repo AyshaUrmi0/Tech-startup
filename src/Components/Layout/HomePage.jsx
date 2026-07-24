@@ -1,8 +1,8 @@
 import React from "react";
 import BannerSlider from "../Home/BannerSlider";
-import Test from "../test";
+import Test from "../Test";
 import FeaturedInnovators from "../Home/FeaturedInnovators";
-import InnovatorSpotlight from "../Home/InnovatorSpotlight ";
+import InnovatorSpotlight from "../Home/InnovatorSpotlight";
 
 const HomePage = () => {
   return (
