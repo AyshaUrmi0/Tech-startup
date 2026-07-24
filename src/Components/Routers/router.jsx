@@ -16,12 +16,12 @@ import PrivateRoute from './Privateroute';
 
 
 
-const Layout = ({ children }) => (
-  <>
+const Layout = ({ children, hideFooter = false }) => (
+  <div className="flex flex-col min-h-screen">
     <Navbar />
-    <main>{children}</main>
-    <Footer />
-  </>
+    <main className="flex-grow">{children}</main>
+    {!hideFooter && <Footer />}
+  </div>
 );
 
 const router = createBrowserRouter([
@@ -45,9 +45,9 @@ const router = createBrowserRouter([
     path: '/addCampaign',
     element: (
       <Layout>
-       <PrivateRoute>
-       <AddCampaign />
-       </PrivateRoute>
+        <PrivateRoute>
+          <AddCampaign />
+        </PrivateRoute>
       </Layout>
     ),
   },
@@ -55,7 +55,9 @@ const router = createBrowserRouter([
     path: '/myCampaigns',
     element: (
       <Layout>
-       <PrivateRoute> <MyCampaigns /></PrivateRoute>
+        <PrivateRoute>
+          <MyCampaigns />
+        </PrivateRoute>
       </Layout>
     ),
   },
@@ -63,7 +65,9 @@ const router = createBrowserRouter([
     path: '/myDonations',
     element: (
       <Layout>
-       <PrivateRoute><MyDonations/></PrivateRoute>
+        <PrivateRoute>
+          <MyDonations />
+        </PrivateRoute>
       </Layout>
     ),
   },
@@ -71,7 +75,9 @@ const router = createBrowserRouter([
     path: '/campaign/:id',
     element: (
       <Layout>
-       <PrivateRoute><CampaignDetails/></PrivateRoute>
+        <PrivateRoute>
+          <CampaignDetails />
+        </PrivateRoute>
       </Layout>
     ),
   },
@@ -86,7 +92,7 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: (
-      <Layout>
+      <Layout hideFooter={true}>
         <Login />
       </Layout>
     ),
@@ -94,7 +100,7 @@ const router = createBrowserRouter([
   {
     path: '/register',
     element: (
-      <Layout>
+      <Layout hideFooter={true}>
         <Register />
       </Layout>
     ),
