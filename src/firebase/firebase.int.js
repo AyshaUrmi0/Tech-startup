@@ -1,11 +1,9 @@
-// Import the functions you need from the SDKs you need
+// Firebase SDK v12 — modular imports
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+// Firebase project config — values injected at build time via Vite env vars
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_PUBLIC_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_PUBLIC_FIREBASE_AUTH_DOMAIN,
@@ -15,8 +13,10 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_PUBLIC_FIREBASE_APP_ID,
 };
 
-// Initialize Firebase
+// Initialize Firebase app (singleton — only runs once)
 const app = initializeApp(firebaseConfig);
+
+// Export pre-initialized service instances
 export default app;
 export const auth = getAuth(app);
 export const db = getFirestore(app);
