@@ -1,52 +1,113 @@
 import React from "react";
 import { Fade, Zoom } from "react-awesome-reveal";
+import { Link } from "react-router-dom";
+import { FaQuoteLeft, FaCheckCircle, FaArrowRight, FaStar } from "react-icons/fa";
 
 const InnovatorSpotlight = () => {
-   const innovators = [
-       {
-           name: "Alex Johnson",
-           tagline: "Redefining AI for Healthcare",
-           photo: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg?t=st=1733415489~exp=1733419089~hmac=f98324ca4a0719917f68f09a51d0c036de5533629c81dee72e90802ca00fb94f&w=740",
-           story: "Alex's AI project is transforming diagnostics by providing instant and accurate results. Crowdfunding enabled him to develop a prototype that is now saving lives.",
-           campaignLink: "/campaign/1",
-       },
-       {
-           name: "Sophia Lee",
-           tagline: "Sustainable Tech for a Better Planet",
-           photo: "https://img.freepik.com/free-vector/young-man-orange-hoodie_1308-173533.jpg?t=st=1733415564~exp=1733419164~hmac=e84d6ded91aaa453cbc87d9cf747d7dd723a74ca62b81216b4913e7dfc880eca&w=360",
-           story: "Sophia's eco-friendly hardware initiative is reducing e-waste. With support from backers, she has scaled her production and made an impact globally.",
-           campaignLink: "/campaign/2",
-       },
-   ];
+  const spotlights = [
+    {
+      id: 1,
+      name: "Dr. Sarah Jenkins",
+      tagline: "Breakthrough in AI Diagnostic Vision",
+      photo: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=600&q=80",
+      story: "Through TechSpring backers, Sarah raised $850k to prototype non-invasive AI smart glasses for early diabetic retinopathy detection. Her solution is currently in clinical trial phases across 14 hospitals.",
+      achievement: "Featured in MIT Tech Review 2026",
+      impact: "14+ Clinical Trials Active",
+      badge: "Spotlight Founder",
+    },
+    {
+      id: 2,
+      name: "David Vance",
+      tagline: "Eco-Friendly Micro-Grid Power Technology",
+      photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80",
+      story: "David developed a decentralized solar micro-grid battery system that provides uninterrupted renewable power to off-grid rural communities. Over 5,000 households have gained access to clean energy.",
+      achievement: "Global Green Tech Winner",
+      impact: "5,000+ Homes Powered",
+      badge: "Community Pioneer",
+    },
+  ];
 
-    return (
-        <section className="py-12 px-4 max-w-6xl mx-auto">
-            <Zoom>
-                <h2 className="mb-8 text-3xl font-bold text-center text-gray-900 dark:text-white">Innovator Spotlight</h2>
-            </Zoom>
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                {innovators.map((innovator, index) => (
-                    <Fade key={index} cascade damping={0.1} triggerOnce>
-                        <div className="flex flex-col items-center p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md hover:shadow-xl transition-shadow">
-                            <img
-                                src={innovator.photo}
-                                alt={innovator.name}
-                                className="w-28 h-28 mx-auto rounded-full object-cover ring-4 ring-teal-400 dark:ring-teal-500 shadow-md"
-                            />
-                            <h3 className="mt-4 text-xl font-bold text-center text-gray-900 dark:text-white">{innovator.name}</h3>
-                            <p className="text-center text-teal-600 dark:text-teal-400 font-medium text-sm mt-1">{innovator.tagline}</p>
-                            <p className="mt-4 text-gray-600 dark:text-gray-300 text-center text-sm leading-relaxed">{innovator.story}</p>
-                            <button
-                                className="w-full px-4 py-2 mt-6 font-medium text-center text-white bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 rounded-lg transition-colors shadow-sm"
-                            >
-                                View Campaign
-                            </button>
-                        </div>
-                    </Fade>
-                ))}
+  return (
+    <section className="py-16 px-4 max-w-7xl mx-auto">
+      <Fade direction="down" triggerOnce>
+        <div className="mb-12 text-center">
+          <span className="px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-teal-700 dark:text-teal-300 bg-teal-100 dark:bg-teal-900/50 rounded-full border border-teal-200 dark:border-teal-800">
+            Founder Success Stories
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-4">
+            Innovator Spotlight
+          </h2>
+          <p className="mt-3 text-gray-600 dark:text-gray-300 max-w-2xl mx-auto text-base">
+            Discover how crowdfunding on TechSpring empowers visionary creators to transform early prototypes into real-world impact.
+          </p>
+        </div>
+      </Fade>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {spotlights.map((item) => (
+          <Zoom key={item.id} triggerOnce>
+            <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700/80 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8 flex flex-col justify-between relative overflow-hidden group">
+              
+              {/* Subtle Ambient Background Accent */}
+              <div className="absolute -top-12 -right-12 w-40 h-40 bg-teal-500/10 dark:bg-teal-500/20 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700"></div>
+
+              <div>
+                {/* Header Profile Info */}
+                <div className="flex items-center gap-5 mb-6">
+                  <div className="relative">
+                    <img
+                      src={item.photo}
+                      alt={item.name}
+                      className="w-20 h-20 rounded-2xl object-cover ring-4 ring-teal-500/30 shadow-md"
+                    />
+                    <div className="absolute -bottom-2 -right-2 bg-amber-400 text-gray-900 p-1.5 rounded-full shadow">
+                      <FaStar className="text-xs" />
+                    </div>
+                  </div>
+                  <div>
+                    <span className="text-xs font-bold text-teal-600 dark:text-teal-400 tracking-wide uppercase">
+                      {item.badge}
+                    </span>
+                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white mt-0.5">{item.name}</h3>
+                    <p className="text-sm font-medium text-gray-500 dark:text-gray-400">{item.tagline}</p>
+                  </div>
+                </div>
+
+                {/* Story Block with Quote Icon */}
+                <div className="relative bg-gray-50 dark:bg-gray-900/60 p-5 rounded-xl border border-gray-100 dark:border-gray-700/50 mb-6">
+                  <FaQuoteLeft className="text-teal-500/30 text-2xl absolute -top-3 left-4" />
+                  <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed italic relative z-10">
+                    "{item.story}"
+                  </p>
+                </div>
+
+                {/* Achievement & Impact Highlights */}
+                <div className="space-y-2.5 mb-6">
+                  <div className="flex items-center gap-2.5 text-xs text-gray-700 dark:text-gray-300 font-semibold">
+                    <FaCheckCircle className="text-teal-500 text-sm flex-shrink-0" />
+                    <span>{item.achievement}</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-xs text-gray-700 dark:text-gray-300 font-semibold">
+                    <FaCheckCircle className="text-teal-500 text-sm flex-shrink-0" />
+                    <span>{item.impact}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Functional Navigation Action (No Dummy Buttons) */}
+              <Link
+                to="/campaigns"
+                className="inline-flex items-center justify-center gap-2 w-full py-3 font-semibold text-white bg-teal-600 hover:bg-teal-700 dark:bg-teal-500 dark:hover:bg-teal-600 rounded-xl transition-all shadow-md group-hover:shadow-lg text-sm"
+              >
+                <span>Explore Active Tech Campaigns</span>
+                <FaArrowRight className="text-xs group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
-        </section>
-    );
+          </Zoom>
+        ))}
+      </div>
+    </section>
+  );
 };
 
 export default InnovatorSpotlight;
