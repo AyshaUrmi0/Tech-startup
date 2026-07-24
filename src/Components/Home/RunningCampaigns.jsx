@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../Card";
+import CardSkeleton from "../Others/CardSkeleton";
 import { Zoom } from "react-awesome-reveal";
 import { getRunningCampaigns } from "../../services/api";
 
@@ -24,9 +25,15 @@ const RunningCampaigns = () => {
             </Zoom>
            
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {campaigns.map((item) => (
-                    <Card key={item._id} item={item} />
-                ))}
+                {loading ? (
+                    Array.from({ length: 6 }).map((_, index) => (
+                        <CardSkeleton key={index} />
+                    ))
+                ) : (
+                    campaigns.map((item) => (
+                        <Card key={item._id} item={item} />
+                    ))
+                )}
             </div>
         </section>
     );

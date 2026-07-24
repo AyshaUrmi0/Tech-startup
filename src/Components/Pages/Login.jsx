@@ -3,6 +3,8 @@ import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopu
 import { Link, useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
+import { getFriendlyErrorMessage } from '../../utils/firebaseErrors';
+
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,7 +19,7 @@ const Login = () => {
                 toast.success("Login Successful!");
                 navigate("/");
             })
-            .catch((err) => toast.error(err.message));
+            .catch((err) => toast.error(getFriendlyErrorMessage(err)));
     };
 
     const handleGoogleLogin = () => {
@@ -26,7 +28,7 @@ const Login = () => {
                 toast.success("Logged in with Google!");
                 navigate("/");
             })
-            .catch((err) => toast.error(err.message));
+            .catch((err) => toast.error(getFriendlyErrorMessage(err)));
     };
 
     return (

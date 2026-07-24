@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
+import { getFriendlyErrorMessage } from '../../utils/firebaseErrors';
+
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -27,7 +29,7 @@ const Register = () => {
                 toast.success("Registration Successful!");
                 navigate("/");
             })
-            .catch((err) => toast.error(err.message));
+            .catch((err) => toast.error(getFriendlyErrorMessage(err)));
     };
 
     return (

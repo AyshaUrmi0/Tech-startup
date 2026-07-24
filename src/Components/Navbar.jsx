@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { FaBars, FaTimes, FaMoon, FaSun } from "react-icons/fa";
 import { useAuth } from "../Components/provider/AuthProvider";
 import { toast } from "react-toastify";
+
+const navLinkClass = ({ isActive }) =>
+  isActive
+    ? "text-teal-600 dark:text-teal-400 font-bold border-b-2 border-teal-500 py-1"
+    : "hover:text-teal-600 dark:hover:text-teal-400 py-1 transition-colors";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -98,22 +103,21 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="hidden navbar-center lg:flex">
-        <ul className="px-1 menu menu-horizontal font-medium text-gray-700 dark:text-gray-200 space-x-1">
+        <ul className="px-1 menu menu-horizontal font-medium text-gray-700 dark:text-gray-200 space-x-6">
           <li>
-            <Link to="/" className="hover:text-teal-600 dark:hover:text-teal-400">Home</Link>
+            <NavLink to="/" className={navLinkClass}>Home</NavLink>
           </li>
           <li>
-            <Link to="/campaigns" className="hover:text-teal-600 dark:hover:text-teal-400">
-            All Campaigns</Link>
+            <NavLink to="/campaigns" className={navLinkClass}>All Campaigns</NavLink>
           </li>
           <li>
-            <Link to="/addCampaign" className="hover:text-teal-600 dark:hover:text-teal-400">Add New Campaign</Link>
+            <NavLink to="/addCampaign" className={navLinkClass}>Add New Campaign</NavLink>
           </li>
           <li>
-            <Link to="/myCampaigns" className="hover:text-teal-600 dark:hover:text-teal-400">My Campaigns</Link>
+            <NavLink to="/myCampaigns" className={navLinkClass}>My Campaigns</NavLink>
           </li>
           <li>
-            <Link to="/myDonations" className="hover:text-teal-600 dark:hover:text-teal-400">My Donations</Link>
+            <NavLink to="/myDonations" className={navLinkClass}>My Donations</NavLink>
           </li>
         </ul>
       </div>
