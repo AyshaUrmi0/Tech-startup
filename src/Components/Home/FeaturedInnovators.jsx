@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Fade, Zoom } from "react-awesome-reveal";
 import { FaRocket, FaAward, FaUsers } from "react-icons/fa";
 
@@ -106,9 +107,12 @@ const FeaturedInnovators = () => {
                   <span className="text-xs font-bold text-gray-500 dark:text-gray-400">
                     Project: <span className="text-gray-900 dark:text-white font-semibold">{innovator.project}</span>
                   </span>
-                  <button className="px-4 py-2 text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/40 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-500 border border-teal-200 dark:border-teal-800 rounded-lg transition-colors shadow-sm">
-                    View Journey &rarr;
-                  </button>
+                  <Link
+                    to="/campaigns"
+                    className="px-4 py-2 text-xs font-bold text-teal-600 dark:text-teal-400 bg-teal-50 dark:bg-teal-900/40 hover:bg-teal-600 hover:text-white dark:hover:bg-teal-500 border border-teal-200 dark:border-teal-800 rounded-lg transition-colors shadow-sm"
+                  >
+                    Explore Campaigns &rarr;
+                  </Link>
                 </div>
               </div>
             </div>
