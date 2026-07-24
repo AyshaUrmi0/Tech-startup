@@ -12,9 +12,9 @@ const Card = ({ item }) => {
     <div className="w-11/12 mx-auto bg-teal-100 shadow-xl card">
       <figure className="px-10 pt-10">
         <img
-          src={item.imageURL}
+          src={item.image || item.imageURL}
           alt={item.title}
-          className="rounded-xl"
+          className="w-full h-48 object-cover rounded-xl"
         />
       </figure>
       <div className="items-center card-body">
