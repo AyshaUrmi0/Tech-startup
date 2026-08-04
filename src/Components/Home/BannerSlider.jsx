@@ -4,25 +4,29 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
+import banner1 from "../../assets/banner1.png";
+import banner2 from "../../assets/banner2.png";
+import banner3 from "../../assets/banner3.png";
+
 const BannerSlider = () => {
   const slides = [
     {
       id: 1,
-      image: "/images/banner1.png",
+      image: banner1,
       title: "Welcome to TechSpring",
       description:
         "Empowering the next generation of tech startups to innovate and grow.",
     },
     {
       id: 2,
-      image: "/images/banner2.png",
+      image: banner2,
       title: "Shape Your Future",
       description:
         "Join us in launching revolutionary tech solutions that change the world.",
     },
     {
       id: 3,
-      image: "/images/banner3.png",
+      image: banner3,
       title: "Join The Movement",
       description:
         "Be part of a community that supports innovative tech startups and ideas.",
