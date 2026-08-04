@@ -30,27 +30,27 @@ const BannerSlider = () => {
   ];
 
   return (
-    <div className="w-full rounded-md h-[400px] md:h-[500px]">
+    <div className="w-full rounded-md h-[400px] md:h-[500px] overflow-hidden">
       <Swiper
         modules={[Navigation]} // Use the imported Navigation module
         navigation
         loop
-        className="h-full"
+        className="h-full w-full"
         spaceBetween={30}>
         {slides.map((slide) => (
-          <SwiperSlide key={slide.id} className="relative">
+          <SwiperSlide key={slide.id} className="relative h-full w-full">
             {/* Background Image */}
             <img
               src={slide.image}
               alt={slide.title}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover z-0"
             />
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black/40"></div>
+            <div className="absolute inset-0 bg-black/40 z-10"></div>
 
             {/* Slide Text */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
+            <div className="relative z-20 flex flex-col items-center justify-center h-full px-4 text-center text-white">
               <h2 className="text-3xl font-bold md:text-5xl">{slide.title}</h2>
               <p className="mt-4 text-lg md:text-xl">{slide.description}</p>
             </div>
