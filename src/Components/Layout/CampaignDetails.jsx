@@ -6,12 +6,16 @@ import { useAuth } from "../../Components/provider/AuthProvider"; // Import the 
 import { toast } from "react-toastify"; // Import react-toastify
 import "react-toastify/dist/ReactToastify.css"; // Import react-toastify CSS
 
+const DEFAULT_CAMPAIGN_IMAGE =
+  "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80";
+
 const CampaignDetails = ({ setDonations = () => {} }) => {
   // Pass setDonations as a prop with a default value
   const { id } = useParams();
   const navigate = useNavigate();
   const { user, loading } = useAuth(); // Use the useAuth hook to get user data
   const [campaign, setCampaign] = useState(null);
+  const [imgSrc, setImgSrc] = useState(DEFAULT_CAMPAIGN_IMAGE);
 
   useEffect(() => {
     const fetchCampaign = async () => {
@@ -24,6 +28,7 @@ const CampaignDetails = ({ setDonations = () => {} }) => {
         }
         const data = await response.json();
         setCampaign(data);
+        setImgSrc(data?.image || data?.imageURL || DEFAULT_CAMPAIGN_IMAGE);
       } catch (error) {
         console.error(error);
         toast.error("Unable to fetch campaign details. Redirecting to homepage.");
@@ -90,13 +95,10 @@ const CampaignDetails = ({ setDonations = () => {} }) => {
     <div className="max-w-4xl mx-auto my-10 p-6 md:p-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl transition-colors duration-300">
       <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{campaign.title}</h1>
       <img
-        src={campaign.image || campaign.imageURL || "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80"}
+        src={imgSrc}
         alt={campaign.title}
-        onError={(e) => {
-          e.target.onerror = null;
-          e.target.src = "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80";
-        }}
-        className="object-cover w-full h-80 my-4 rounded-xl shadow-md"
+        onError={() => setImgSrc(DEFAULT_CAMPAIGN_IMAGE)}
+        className="object-cover w-full h-80 my-4 rounded-xl shadow-md bg-gray-100 dark:bg-gray-700"
       />
       <div className="space-y-3 text-gray-700 dark:text-gray-200 mt-6 text-base">
         <p className="leading-relaxed">

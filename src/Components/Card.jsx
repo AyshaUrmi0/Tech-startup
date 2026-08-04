@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const DEFAULT_CAMPAIGN_IMAGE =
@@ -6,22 +6,22 @@ const DEFAULT_CAMPAIGN_IMAGE =
 
 const Card = ({ item }) => {
   const navigate = useNavigate();
+  const [imgSrc, setImgSrc] = useState(
+    item?.image || item?.imageURL || DEFAULT_CAMPAIGN_IMAGE
+  );
 
   const handleSeeMore = () => {
-    navigate(`/campaign/${item._id}`); 
+    navigate(`/campaign/${item._id}`);
   };
 
   return (
     <div className="w-11/12 mx-auto bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl rounded-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
       <figure className="p-4">
         <img
-          src={item.image || item.imageURL || DEFAULT_CAMPAIGN_IMAGE}
+          src={imgSrc}
           alt={item.title}
-          onError={(e) => {
-            e.target.onerror = null;
-            e.target.src = DEFAULT_CAMPAIGN_IMAGE;
-          }}
-          className="w-full h-48 object-cover rounded-xl shadow-sm"
+          onError={() => setImgSrc(DEFAULT_CAMPAIGN_IMAGE)}
+          className="w-full h-48 object-cover rounded-xl shadow-sm bg-gray-100 dark:bg-gray-700"
         />
       </figure>
       <div className="px-6 py-4 flex flex-col flex-grow items-center text-center">
