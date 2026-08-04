@@ -58,6 +58,10 @@ const InnovatorSpotlight = () => {
                     <img
                       src={item.photo}
                       alt={item.name}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80";
+                      }}
                       className="w-20 h-20 rounded-2xl object-cover ring-4 ring-teal-500/30 shadow-md"
                     />
                     <div className="absolute -bottom-2 -right-2 bg-amber-400 text-gray-900 p-1.5 rounded-full shadow">

@@ -1,6 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+const DEFAULT_CAMPAIGN_IMAGE =
+  "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80";
+
 const Card = ({ item }) => {
   const navigate = useNavigate();
 
@@ -12,8 +15,12 @@ const Card = ({ item }) => {
     <div className="w-11/12 mx-auto bg-white dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-200 dark:border-gray-700 shadow-md hover:shadow-xl rounded-2xl transition-all duration-300 overflow-hidden flex flex-col justify-between">
       <figure className="p-4">
         <img
-          src={item.image || item.imageURL}
+          src={item.image || item.imageURL || DEFAULT_CAMPAIGN_IMAGE}
           alt={item.title}
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = DEFAULT_CAMPAIGN_IMAGE;
+          }}
           className="w-full h-48 object-cover rounded-xl shadow-sm"
         />
       </figure>

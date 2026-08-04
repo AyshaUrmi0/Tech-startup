@@ -90,8 +90,12 @@ const CampaignDetails = ({ setDonations = () => {} }) => {
     <div className="max-w-4xl mx-auto my-10 p-6 md:p-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-xl transition-colors duration-300">
       <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">{campaign.title}</h1>
       <img
-        src={campaign.image || campaign.imageURL}
+        src={campaign.image || campaign.imageURL || "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80"}
         alt={campaign.title}
+        onError={(e) => {
+          e.target.onerror = null;
+          e.target.src = "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80";
+        }}
         className="object-cover w-full h-80 my-4 rounded-xl shadow-md"
       />
       <div className="space-y-3 text-gray-700 dark:text-gray-200 mt-6 text-base">
