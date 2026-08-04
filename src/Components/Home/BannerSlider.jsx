@@ -1,32 +1,32 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
-
-import banner1 from "../../assets/banner1.png";
-import banner2 from "../../assets/banner2.png";
-import banner3 from "../../assets/banner3.png";
+import "swiper/css/pagination";
 
 const BannerSlider = () => {
   const slides = [
     {
       id: 1,
-      image: banner1,
+      image:
+        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80",
       title: "Welcome to TechSpring",
       description:
         "Empowering the next generation of tech startups to innovate and grow.",
     },
     {
       id: 2,
-      image: banner2,
+      image:
+        "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80",
       title: "Shape Your Future",
       description:
         "Join us in launching revolutionary tech solutions that change the world.",
     },
     {
       id: 3,
-      image: banner3,
+      image:
+        "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1600&q=80",
       title: "Join The Movement",
       description:
         "Be part of a community that supports innovative tech startups and ideas.",
@@ -36,8 +36,9 @@ const BannerSlider = () => {
   return (
     <div className="w-full rounded-2xl h-[400px] md:h-[500px] overflow-hidden relative shadow-xl">
       <Swiper
-        modules={[Navigation, Autoplay]}
+        modules={[Navigation, Autoplay, Pagination]}
         navigation
+        pagination={{ clickable: true }}
         autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop
         className="h-full w-full"
