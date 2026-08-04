@@ -40,12 +40,14 @@ const BannerSlider = () => {
         {slides.map((slide) => (
           <SwiperSlide key={slide.id} className="relative">
             {/* Background Image */}
-            <div
-              className="absolute inset-0 w-full h-full bg-center bg-cover"
-              style={{ backgroundImage: `url(${slide.image})` }}></div>
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
 
             {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+            <div className="absolute inset-0 bg-black/40"></div>
 
             {/* Slide Text */}
             <div className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center text-white">
