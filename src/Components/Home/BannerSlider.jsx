@@ -1,6 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -34,29 +34,30 @@ const BannerSlider = () => {
   ];
 
   return (
-    <div className="w-full rounded-md h-[400px] md:h-[500px] overflow-hidden">
+    <div className="w-full rounded-2xl h-[400px] md:h-[500px] overflow-hidden relative shadow-xl">
       <Swiper
-        modules={[Navigation]} // Use the imported Navigation module
+        modules={[Navigation, Autoplay]}
         navigation
+        autoplay={{ delay: 4000, disableOnInteraction: false }}
         loop
         className="h-full w-full"
-        spaceBetween={30}>
+        spaceBetween={0}>
         {slides.map((slide) => (
           <SwiperSlide key={slide.id} className="relative h-full w-full">
-            {/* Background Image */}
             <img
               src={slide.image}
               alt={slide.title}
-              className="absolute inset-0 w-full h-full object-cover z-0"
+              className="w-full h-full object-cover"
             />
-
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black/40 z-10"></div>
-
-            {/* Slide Text */}
-            <div className="relative z-20 flex flex-col items-center justify-center h-full px-4 text-center text-white">
-              <h2 className="text-3xl font-bold md:text-5xl">{slide.title}</h2>
-              <p className="mt-4 text-lg md:text-xl">{slide.description}</p>
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center text-white"
+              style={{ backgroundColor: "rgba(0, 0, 0, 0.45)" }}>
+              <h2 className="text-3xl font-extrabold md:text-5xl tracking-tight drop-shadow-md">
+                {slide.title}
+              </h2>
+              <p className="mt-4 text-lg md:text-xl max-w-2xl font-medium drop-shadow-sm text-gray-100">
+                {slide.description}
+              </p>
             </div>
           </SwiperSlide>
         ))}
